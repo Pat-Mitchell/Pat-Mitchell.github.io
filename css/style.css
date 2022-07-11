@@ -1,0 +1,21 @@
+body {
+  font-family: Verdana;
+  font-size: 20px;
+}
+
+table {
+  width: 99%;
+}
+
+.topNavigation {
+  border-bottom: 2px lightgrey solid;
+}
+
+.navElement {
+  display: inline;
+  margin-right: 20px;
+}
+
+#myName {
+  float: right;
+}
