@@ -5,21 +5,21 @@
     <title>Pat Mitchell's Portfolio</title>
     <link rel="stylesheet" href="css\style.css">
   </head>
-  <body>
+  <body onload="displayAboutMe()">
     <table>
       <tr>
-        <td class="topNavigation" colspan="2">
+        <td id="topNavigation" colspan="2">
           <ul>
-            <li class="navElement">About Me</li>
-            <li class="navElement">Projects</li>
-            <li class="navElement">Contact</li>
+            <li class="navElement" id="aboutMe">About Me</li>
+            <li class="navElement" id="projects">Projects</li>
+            <li class="navElement" id="contact">Contact</li>
             <li class="navElement" id="myName">Pat Mitchell</li>
           </ul>
         </td>
       </tr>
-      <tr>
-        <td id="currentLocation">Home</td>
+      <tr id="infoRow">
       </tr>
     </table>
+    <script src="scripts\index.js" type="text/javascript"></script>
   </body>
 </html>

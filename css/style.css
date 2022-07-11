@@ -1,19 +1,33 @@
-body {
+html, body {
   font-family: Verdana;
-  font-size: 20px;
+  font-size: 25px;
+  height: 99%;
 }
 
 table {
   width: 99%;
-}
-
-.topNavigation {
-  border-bottom: 2px lightgrey solid;
+  height: 100%;
 }
 
 .navElement {
   display: inline;
   margin-right: 20px;
+  font-weight: bolder;
+}
+
+.infoHeader {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#infoRow {
+  vertical-align: top;
+  font-size: 15px;
+}
+
+#topNavigation {
+  height: 25px;
+  border-bottom: 2px lightgrey solid;
 }
 
 #myName {
