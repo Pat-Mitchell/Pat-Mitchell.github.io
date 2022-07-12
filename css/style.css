@@ -29,13 +29,31 @@ iframe {
   font-size: 20px;
 }
 
-.projectSelection {
+
+.projectAccordian {
+  font-family: Verdana;
+  background-color: white;
   font-size: 15px;
   font-weight: bold;
-  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  border: 1px solid lightgrey;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.projectPanel {
+  font-size: 15px;
+  font-weight: bold;
   margin: 0px;
-  border: 1px solid red;
+  border: none;
   text-align: center;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
 }
 
 #infoRow {

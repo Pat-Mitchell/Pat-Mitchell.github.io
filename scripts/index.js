@@ -19,29 +19,73 @@ function getPage(str) {
 function displayProjects() {
   infoRow.innerHTML = `
     <td id="projectNavigation">
-      <p class="projectSelection" id="project1" onclick="getPage('test.html')">Project1</p>
-      <p class="projectSelection" id="project2">Project2</p>
-      <p class="projectSelection" id="project3">Project3</p>
+      <button class="projectAccordian">Computer Graphics</button>
+      <div class="projectPanel">
+        <p id="project1" onclick="getPage('ComputerGraphics\\\\introduction.html')">Introduction</p>
+      </div>
+      <button class="projectAccordian">Probability and Statistics</button>
+      <div class="projectPanel">
+        <p id="project2">Project2</p>
+      </div>
+      <button class="projectAccordian">Engineering</button>
+      <div class="projectPanel">
+        <p id="project3">Project3</p>
+      </div>
     </td>
     <td id="projectCell">
     </td>
   `
+
+  let acc = document.getElementsByClassName("projectAccordian");
+
+  // Accordian code for the nested projects
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      /* Toggle between adding and removing the "active" class,
+      to highlight the button that controls the panel */
+      this.classList.toggle("active");
+
+      /* Toggle between hiding and showing the active panel */
+      let panel = this.nextElementSibling;
+      if(panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        panel.style.border = null;
+      }
+      else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.style.border = "1px solid lightgrey";
+      }
+    });
+  }
 }
 
 function displayAboutMe() {
   infoRow.innerHTML = `
     <td>
       <p class="infoHeader">&ensp;&ensp;Experience</p>
-      <p>&ensp;&ensp;&ensp;&ensp;Plate Room Operator at Dow Jones</p>
-      <p>&ensp;&ensp;&ensp;&ensp;Supplemental Instruction Leader at STCC</p>
-      <p>&ensp;&ensp;&ensp;&ensp;Dining Room Services at Loomis Communities Retirement Home</p>
+      <p>&ensp;&ensp;&ensp;&ensp;2020 - Present&ensp;&ensp;<b>PlateRoom Operator</b></p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Dow Jones & Company, Inc.</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Adequately prepared plates to be put on the press.</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Ensured the quality of the plates by observing no scratches or blemishes.</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Rectify minor mechanical errors occuring in production.</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Maintain accurate data into analysis software.</p>
+      <p>&ensp;&ensp;&ensp;&ensp;2019-2020&emsp;&emsp;&emsp;<b>Supplemental Instruction Leader</b></p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Springfield Technical Community College</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Develop and maintain a relationship with students.</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Maintain pace with specified classes in order to better assist students seeking assistance.</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Guided students both in and out of class with course work.</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Organized individual and group meetings with students.</p>
       <p class="infoHeader">&ensp;&ensp;Education</p>
-      <p>&ensp;&ensp;&ensp;&ensp;Springfield Technical Community College - 2020</p>
-      <p>&ensp;&ensp;&ensp;&ensp;Western New England University - 2017</p>
+      <p>&ensp;&ensp;&ensp;&ensp;2018 - 2020&ensp;&emsp;&emsp;<b>Assoc, Computer Science, Springfield Technical Community College</b></p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Pursued a passion for programming</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Excelled in both C++ and Java classes</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Impressed a professor so much, he said I didn't need to take the final.</p>
+      <p>&ensp;&ensp;&ensp;&ensp;2013 - 2017&ensp;&emsp;&emsp;<b>BA, Mechanical Engineering, Western New England University</b></p>
       <p class="infoHeader">&ensp;&ensp;Skills</p>
-      <p>&ensp;&ensp;&ensp;&ensp;HTML and CSS</p>
-      <p>&ensp;&ensp;&ensp;&ensp;Javascript</p>
-      <p>&ensp;&ensp;&ensp;&ensp;Excel and other spreadsheet aplications</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;HTML and CSS</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Javascript</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;C++</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Excel and other spreadsheet aplications</p>
     </td>
   `;
 }
