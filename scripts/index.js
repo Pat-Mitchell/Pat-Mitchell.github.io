@@ -20,8 +20,9 @@ function displayProjects() {
   infoRow.innerHTML = `
     <td id="projectNavigation">
       <button class="projectAccordian">Computer Graphics</button>
-      <div class="projectPanel" onclick="getPage('ComputerGraphics\\\\introduction.html')">
-        <p>Introduction</p>
+      <div class="projectPanel">
+        <div onclick="getPage('ComputerGraphics\\\\introduction.html')"><p>Introduction</p></div>
+        <div onclick="getPage('ComputerGraphics\\\\linearAlgebra.html')"><p>Linear Algebra</p></div>
       </div>
       <button class="projectAccordian">Probability and Statistics</button>
       <div class="projectPanel">
@@ -63,6 +64,7 @@ function displayAboutMe() {
   infoRow.innerHTML = `
     <td>
       <p class="infoHeader">&ensp;&ensp;Experience</p>
+      <div class="infoDiv">
       <p>&ensp;&ensp;&ensp;&ensp;2020 - Present&ensp;&ensp;<b>PlateRoom Operator</b></p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Dow Jones & Company, Inc.</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Adequately prepared plates to be put on the press.</p>
@@ -75,17 +77,22 @@ function displayAboutMe() {
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Maintain pace with specified classes in order to better assist students seeking assistance.</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Guided students both in and out of class with course work.</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Organized individual and group meetings with students.</p>
+      </div>
       <p class="infoHeader">&ensp;&ensp;Education</p>
+      <div class="infoDiv">
       <p>&ensp;&ensp;&ensp;&ensp;2018 - 2020&ensp;&emsp;&emsp;<b>Assoc, Computer Science, Springfield Technical Community College</b></p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Pursued a passion for programming</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Excelled in both C++ and Java classes</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&#8226;&emsp;Impressed a professor so much, he said I didn't need to take the final.</p>
       <p>&ensp;&ensp;&ensp;&ensp;2013 - 2017&ensp;&emsp;&emsp;<b>BA, Mechanical Engineering, Western New England University</b></p>
+      </div>
       <p class="infoHeader">&ensp;&ensp;Skills</p>
+      <div class="infoDiv">
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;HTML and CSS</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Javascript</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;C++</p>
       <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Excel and other spreadsheet aplications</p>
+      </div>
     </td>
   `;
 }
