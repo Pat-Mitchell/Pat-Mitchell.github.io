@@ -20,16 +20,16 @@ function displayProjects() {
   infoRow.innerHTML = `
     <td id="projectNavigation">
       <button class="projectAccordian">Computer Graphics</button>
-      <div class="projectPanel">
-        <p id="project1" onclick="getPage('ComputerGraphics\\\\introduction.html')">Introduction</p>
+      <div class="projectPanel" onclick="getPage('ComputerGraphics\\\\introduction.html')">
+        <p>Introduction</p>
       </div>
       <button class="projectAccordian">Probability and Statistics</button>
       <div class="projectPanel">
-        <p id="project2">Project2</p>
+        <p>Project2</p>
       </div>
       <button class="projectAccordian">Engineering</button>
       <div class="projectPanel">
-        <p id="project3">Project3</p>
+        <p>Project3</p>
       </div>
     </td>
     <td id="projectCell">
