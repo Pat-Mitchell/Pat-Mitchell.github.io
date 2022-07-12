@@ -9,6 +9,15 @@ table {
   height: 100%;
 }
 
+td {
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .navElement {
   display: inline;
   margin-right: 20px;
@@ -20,14 +29,27 @@ table {
   font-size: 20px;
 }
 
-#infoRow {
-  vertical-align: top;
+.projectSelection {
   font-size: 15px;
+  font-weight: bold;
+  padding: 12px;
+  margin: 0px;
+  border: 1px solid red;
+  text-align: center;
+}
+
+#infoRow {
+  font-size: 15px;
+  vertical-align: top;
 }
 
 #topNavigation {
   height: 25px;
   border-bottom: 2px lightgrey solid;
+}
+
+#projectNavigation {
+  width: 15%;
 }
 
 #myName {

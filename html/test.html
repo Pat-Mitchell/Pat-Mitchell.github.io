@@ -5,6 +5,10 @@
     <title></title>
   </head>
   <body>
-    <h1>Hello, World!</h1>
+    <h1 id="demo">Hello, World!</h1>
+    <script  type="text/javascript">
+      let demo = document.getElementById("demo");
+      demo.addEventListener("click", function() { console.log(`Hello`); });
+    </script>
   </body>
 </html>
