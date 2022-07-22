@@ -16,9 +16,15 @@
       <figcaption>A triangle: the basis of all 3d meshes.</figcaption>
     </figure>
     <figure>
-      <canvas id="canvas2" width="300" height="300"></canvas>
-      <figcaption>The Utah Teapot rendered using my library.</figcaption>
+      <canvas id="canvas3" width="300" height="300"></canvas>
+      <figcaption>Colorful cube rendered using my matrix library.</figcaption>
     </figure>
+    <p>&emsp;Above are three examples of how I spent my lunch breaks with
+       the &#60;canvas&#62;. The house is drawn using built in tools for
+       the canvas's 2d context. The red triangle is drawn using my library's
+       fillTriangle method. The cube makes use of my matrix library to
+       transform the vertices of a mesh and a z-buffer so triangles are
+       drawn correctly.</p>
     <p>&emsp;I first started playing with the canvas during lunch
        breaks at a printing press (I wasn't on the press. I was only
        printing the plates that go on the press).</p>
@@ -44,18 +50,9 @@
        because it didn't consider pixels outside the triangle. However,
        I moved onto using WebGL before learning how to use the browser's
        built in tools for diagnostics.</p>
-    <script type="text/javascript">
-      const canvas = document.getElementById("canvas1");
-      const ctx = canvas.getContext(`2d`);
-      ctx.lineWidth = 10;
-      ctx.strokeRect(75, 140, 150, 110);
-      ctx.fillRect(130, 190, 40, 60);
-      ctx.beginPath();
-      ctx.moveTo(50, 140);
-      ctx.lineTo(150, 60);
-      ctx.lineTo(250, 140);
-      ctx.closePath();
-      ctx.stroke();
-    </script>
+    <script src="..\scripts\GfxMath.js" type="text/javascript"></script>
+    <script src="..\scripts\screenManager.js" type="text/javascript"></script>
+    <script src="..\scripts\shapeMaker.js" type="text/javascript"></script>
+    <script src="..\scripts\canvas1.js" type="text/javascript"></script>
   </body>
 </html>
