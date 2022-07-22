@@ -21,8 +21,10 @@ function displayProjects() {
     <td id="projectNavigation">
       <button class="projectAccordian">Computer Graphics</button>
       <div class="projectPanel">
-        <div onclick="getPage('ComputerGraphics\\\\introduction.html')"><p>Introduction</p></div>
-        <div onclick="getPage('ComputerGraphics\\\\linearAlgebra.html')"><p>Linear Algebra</p></div>
+        <div onclick="getPage('ComputerGraphics\\\\html\\\\introduction.html')"><p>Introduction</p></div>
+        <div onclick="getPage('ComputerGraphics\\\\html\\\\linearAlgebra.html')"><p>Linear Algebra</p></div>
+        <div onclick="getPage('ComputerGraphics\\\\html\\\\canvas1.html')"><p>Drawing to the canvas</p></div>
+        <div onclick="getPage('ComputerGraphics\\\\html\\\\learningWebGL.html')"><p>WebGL</p></div>
       </div>
       <button class="projectAccordian">Probability and Statistics</button>
       <div class="projectPanel">

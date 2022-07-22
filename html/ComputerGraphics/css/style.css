@@ -4,6 +4,19 @@ html, body {
 
 canvas {
   border: 1px gray solid;
+  margin: 0px;
+  padding: 0px;
+}
+
+figure {
+  display: inline-block;
+  margin: 10px;
+  padding: 0px;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 0.75rem;
 }
 
 .compGraphicsMatrix {

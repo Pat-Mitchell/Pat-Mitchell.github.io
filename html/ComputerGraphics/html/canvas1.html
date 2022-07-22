@@ -7,7 +7,18 @@
   </head>
   <body>
     <h3>The HTML Canvas</h3>
-    <canvas id="canvas" width="300" height="300"></canvas>
+    <figure>
+      <canvas id="canvas1" width="300" height="300"></canvas>
+      <figcaption>Drawing of a house using &#60;canvas&#62; methods.</figcaption>
+    </figure>
+    <figure>
+      <canvas id="canvas2" width="300" height="300"></canvas>
+      <figcaption>A triangle: the basis of all 3d meshes.</figcaption>
+    </figure>
+    <figure>
+      <canvas id="canvas2" width="300" height="300"></canvas>
+      <figcaption>The Utah Teapot rendered using my library.</figcaption>
+    </figure>
     <p>&emsp;I first started playing with the canvas during lunch
        breaks at a printing press (I wasn't on the press. I was only
        printing the plates that go on the press).</p>
@@ -30,11 +41,11 @@
     <p>&emsp;I used the second solution for a while until I decided to
        use a DDA (Digital Differential Analysis) solution used in a
        youtuber's windows console game engine. I assumed it was faster
-       because it didn't consider pixels outside the triangle, but
-       this was before I learned about performing diagnositics in Javascript
-       from another youtube video.</p>
+       because it didn't consider pixels outside the triangle. However,
+       I moved onto using WebGL before learning how to use the browser's
+       built in tools for diagnostics.</p>
     <script type="text/javascript">
-      const canvas = document.getElementById("canvas");
+      const canvas = document.getElementById("canvas1");
       const ctx = canvas.getContext(`2d`);
       ctx.lineWidth = 10;
       ctx.strokeRect(75, 140, 150, 110);

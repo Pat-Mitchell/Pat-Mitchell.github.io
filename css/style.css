@@ -17,23 +17,24 @@ iframe {
 .navElement {
   display: inline;
   margin-right: 20px;
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .infoHeader {
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 1.2rem;
 }
 
 .infoDiv {
-  font-size: 0.8em;
+  font-size: 0.9rem;
 }
 
 .projectAccordian {
   font-family: Verdana;
   background-color: white;
-  font-size: 0.8em;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   width: 100%;
@@ -56,12 +57,12 @@ iframe {
 }
 
 .projectPanel div {
-  font-size: 0.75em;
+  font-size: 0.9rem;
   border: 1px solid lightgrey;
 }
 
 #infoRow {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   vertical-align: top;
 }
 
