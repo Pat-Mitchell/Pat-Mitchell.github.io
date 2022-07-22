@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Drawing to the screen</title>
+    <link rel="stylesheet" href="..\css\style.css">
+  </head>
+  <body>
+    <h3>The HTML Canvas</h3>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <p>&emsp;I first started playing with the canvas during lunch
+       breaks at a printing press (I wasn't on the press. I was only
+       printing the plates that go on the press).</p>
+    <p>&emsp;Originally, I was planning to make a couple 2d games
+       for fun. I lost the old files, but I did have snake, breakout,
+       and Conway's Game of Life running using only per-pixel rendering
+       off of the CPU.</p>
+    <p>&emsp;While still using the canvas's basic 2d context,
+       I started teaching myself computer graphics and learned to
+       display three dimensional models. Transforming each vertex
+       in space was relatively easy. I think the hardest part was
+       programming the algorithm to draw triangles.</p>
+    <p>&emsp;The difficulty of the triangles came with finding a
+       good enough algorithm. The Fundamentals of Computer Graphics
+       suggested using barycentric coordinates for two naitive solutions.
+       The first (and worst) was to pole every pixel on the screen and
+       check if they were inside the triangle. The second (and vastly
+       improved solution) was to pole only the pixels inside a rectangle
+       that bonds the triangle.</p>
+    <p>&emsp;I used the second solution for a while until I decided to
+       use a DDA (Digital Differential Analysis) solution used in a
+       youtuber's windows console game engine. I assumed it was faster
+       because it didn't consider pixels outside the triangle, but
+       this was before I learned about performing diagnositics in Javascript
+       from another youtube video.</p>
+    <script type="text/javascript">
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext(`2d`);
+      ctx.lineWidth = 10;
+      ctx.strokeRect(75, 140, 150, 110);
+      ctx.fillRect(130, 190, 40, 60);
+      ctx.beginPath();
+      ctx.moveTo(50, 140);
+      ctx.lineTo(150, 60);
+      ctx.lineTo(250, 140);
+      ctx.closePath();
+      ctx.stroke();
+    </script>
+  </body>
+</html>

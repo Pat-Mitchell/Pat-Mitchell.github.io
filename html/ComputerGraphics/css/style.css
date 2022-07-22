@@ -1,0 +1,34 @@
+html, body {
+  font-family: Verdana;
+}
+
+canvas {
+  border: 1px gray solid;
+}
+
+.compGraphicsMatrix {
+  text-align: center;
+  width: 100px;
+  height: 96px;
+  margin: 0px 0px 0px 25px;
+  border-left: solid 1px gray;
+  border-right: solid 1px gray;
+  position: relative;
+}
+
+.matLeftBracket {
+  width: 10px;
+  height: 1px;
+  background: gray;
+  position: relative;
+  left: 25px;
+}
+
+.matRightBracket {
+  width: 10px;
+  height: 1px;
+  background: gray;
+  position: relative;
+  left: 117px;
+  margin-bottom: -2px;
+}
