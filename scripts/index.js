@@ -26,9 +26,11 @@ function displayProjects() {
         <div onclick="getPage('ComputerGraphics\\\\html\\\\canvas1.html')"><p>Drawing to the canvas</p></div>
         <div onclick="getPage('ComputerGraphics\\\\html\\\\learningWebGL.html')"><p>WebGL</p></div>
       </div>
-      <button class="projectAccordian">Probability and Statistics</button>
+      <button class="projectAccordian">Turn-based Game</button>
       <div class="projectPanel">
-        <p>Project2</p>
+        <div onclick="getPage('TurnBasedGame\\\\html\\\\introduction.html')"><p>Introduction</p></div>
+        <div onclick="getPage('TurnBasedGame\\\\html\\\\1_0-Recreation.html')"><p>Recreation</p></div>
+        <div onclick="getPage('TurnBasedGame\\\\html\\\\2_0-Recreation.html')"><p>More Combat</p></div>
       </div>
       <button class="projectAccordian">Engineering</button>
       <div class="projectPanel">
