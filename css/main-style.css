@@ -1,0 +1,149 @@
+html {
+  width: 100%;
+  height: 99%;
+}
+
+body {
+  width: 100%;
+  height: 99%;
+  margin: 0px;
+  font-family: Arial;
+  background-color: #1995AD;
+}
+
+article {
+  background-image: linear-gradient(#F1F1F2, #BCBABE);
+  width: 70%;
+  margin: 25px auto 0px auto;
+  padding: 10px;
+  text-align: justify;
+  text-justify: inter-word;
+  box-shadow: -0.3em 0.25em 0.25em #2C2A2E;
+}
+
+article h1 {
+  font-size: 2.5rem;
+  margin: 5px;
+  color: #19356D;
+}
+
+article p {
+  font-size: 1.3rem;
+  padding: 5px;
+}
+
+article p:first-of-type:first-letter {
+  font-family: serif;
+  color: #19356D;
+  font-size: 4rem;
+  padding: 10px 3px;
+  margin-right: 6px;
+  float: left;
+}
+
+article p:first-line {
+  line-height: 1em;
+}
+
+.articleCredits {
+  margin-top: 0px;
+  padding-left: 0;
+}
+
+.articleCredits li {
+  display: inline;
+  margin-right: 10rem;
+}
+
+.ArtNavigation {
+  height: 2.2rem;
+}
+
+.inArticleNavigation {
+  display: inline;
+  font-size: 1.5rem;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  text-align: initial;
+  text-justify: none;
+}
+
+#prevArticle {
+  background-image: linear-gradient(to right,#A1D6E2, #81B6C2);
+  float: left;
+  text-align: left;
+  margin-left: -5rem;
+  box-shadow: -0.15em 0.15em 0.1em #2C2A2E;
+}
+
+#nextArticle {
+  background-image: linear-gradient(to right, #81B6C2, #A1D6E2);
+  float: right;
+  margin-right: -5rem;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  box-shadow: 0.15em 0.15em 0.1em #2C2A2E;
+}
+
+.siteBranding {
+  display: inline;
+  padding: 0px;
+  margin: 0px auto 0px 5px;
+}
+
+#siteLogo {
+  width: 70px;
+  height: 70px;
+}
+
+#siteName {
+  width: 415px;
+  height: 70px;
+}
+
+.menuOpen {
+  display: inline;
+  padding: 0px;
+  margin: 0px 5px 0px 0px;
+  float: right;
+}
+
+.menuOpen img {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  margin: 5px 5px 0 0;
+}
+
+.mainNav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-size: 1.3rem;
+}
+
+.mainNav ul {
+  list-style-type: none;
+}
+
+#masthead {
+  width: 100%;
+  position: static;
+  text-align: justify;
+  float: none;
+  background-image: linear-gradient(to bottom right,#A1D6E2, #417682);
+  box-shadow: -0.3em 0.25em 0.25em #2C2A2E;
+}
+
+
+.question {
+  margin-bottom: 0.25rem;
+  padding: 0;
+}
+
+.answer {
+  margin-top: 0.25rem;
+  padding: 0;
+}
