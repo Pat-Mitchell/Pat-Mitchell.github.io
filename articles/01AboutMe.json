@@ -1,0 +1,42 @@
+article = {
+  author:`Pat Mitchell`,
+  date:`Tuesday August 2, 2022`,
+  previousArticle:null,
+  previousArticleTitle:null,
+  nextArticle:null,
+  nextArticleTitle:null,
+  title:`About Pat Mitchell`,
+  body:`
+
+  <p>I am an avid programmer. I started programming in Python some time in
+  when I was a teenager when someone posted a PDF in a video game forum about
+  learning how to program with games. The interest has since spread to different
+  programming languages like C++ and Javascript.</p>
+
+  <p>The experience was immesively helpful during engineering school. I effectively had
+  a jump start with the MatLab course while I was studying to be an engineer
+  and aced the course while helping out my colleages with their homework. I
+  also enjoyed coding projects a lot more than calculating by hand since we'd
+  frequently use the same formalae multiple times and group partners would
+  often get conflicting answers because of rounding errors during hand calculations.</p>
+
+  <p>Then I went back to college for computer science where I was outstanding
+  compared to most of my other colleagues who had just started learning. One
+  professor had actually exempted me from the data sctructures final because
+  I was regularlly getting perfect scores on the quizzes and putting extra
+  flair in the homework assignments. For example, one assignment was to make
+  a lottery number picker app that would get random numbers for different lotteries
+  (Mass Cash, Mega Millions, etc.) from a school server. While
+  the assignment said nothing about design, my app used more than just the default
+  appearance for elements and would change color schemes based on which
+  lottery the user has selected.</p>
+
+  <p>Unfortunately, I graduated with the computer science degree at the start
+  of the Covid-19 pandemic and had several job interviews cancelled as states
+  closed down. In my free time, I kept up with my programming studies on my own
+  from various online and text sources of information. I have taught myself
+  linear algebra and computer graphics so I can program on the computers at work
+  during lunch breaks and I've explored topics like artificial intelligence,
+  quantum mechanics, statistical analysis, probability and statistics, and
+  various topics in economics. I'm excited to keep learning and stay active.</p>`,
+};

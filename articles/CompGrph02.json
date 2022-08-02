@@ -1,0 +1,60 @@
+article = {
+  author:`Pat Mitchell`,
+  date:`Tuesday August 2, 2022`,
+  previousArticle:`introduction`,
+  previousArticleTitle:`Introduction`,
+  nextArticle:null,
+  nextArticleTitle:null,
+  title:`Using the HTML Canvas`,
+  body:`
+  <figure id="figure1">
+    <canvas id="canvas1" width="300" height="300"></canvas>
+    <figcaption>Drawing of a house using &#60;canvas&#62; methods.</figcaption>
+  </figure>
+
+  <p>Above are three examples of how I spent my lunch breaks with
+  the &#60;canvas&#62;. The house is drawn using built in tools for
+  the canvas's 2d context. The red triangle is drawn using my library's
+  fillTriangle method. The cube makes use of my matrix library to
+  transform the vertices of a mesh and a z-buffer so triangles are
+  drawn correctly.</p>
+
+  <p>Above are three examples of how I spent my lunch breaks with
+  the &#60;canvas&#62;. The house is drawn using built in tools for
+  the canvas's 2d context. The red triangle is drawn using my library's
+  fillTriangle method. The cube makes use of my matrix library to
+  transform the vertices of a mesh and a z-buffer so triangles are
+  drawn correctly.</p>
+
+  <figure id="figure2">
+    <canvas id="canvas2" width="300" height="300"></canvas>
+    <figcaption>A triangle: the basis of all 3d meshes.</figcaption>
+  </figure>
+
+  <p>Above are three examples of how I spent my lunch breaks with
+  the &#60;canvas&#62;. The house is drawn using built in tools for
+  the canvas's 2d context. The red triangle is drawn using my library's
+  fillTriangle method. The cube makes use of my matrix library to
+  transform the vertices of a mesh and a z-buffer so triangles are
+  drawn correctly.</p>
+
+  <figure id="figure3">
+    <canvas id="canvas3" width="300" height="300"></canvas>
+    <figcaption>Colorful cube rendered using my matrix library.</figcaption>
+  </figure>
+
+  <p>Above are three examples of how I spent my lunch breaks with
+  the &#60;canvas&#62;. The house is drawn using built in tools for
+  the canvas's 2d context. The red triangle is drawn using my library's
+  fillTriangle method. The cube makes use of my matrix library to
+  transform the vertices of a mesh and a z-buffer so triangles are
+  drawn correctly.</p>
+
+  <p>Above are three examples of how I spent my lunch breaks with
+  the &#60;canvas&#62;. The house is drawn using built in tools for
+  the canvas's 2d context. The red triangle is drawn using my library's
+  fillTriangle method. The cube makes use of my matrix library to
+  transform the vertices of a mesh and a z-buffer so triangles are
+  drawn correctly.</p>
+  `,
+};
