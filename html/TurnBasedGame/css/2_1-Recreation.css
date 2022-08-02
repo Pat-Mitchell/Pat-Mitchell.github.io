@@ -1,0 +1,45 @@
+table {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+#guiDiv {
+  position: relative;
+  top: 65%;
+  height: 250px;
+  font-size: 1.5rem;
+}
+
+#battleLogFieldSet {
+  position: absolute;
+  height: 80%;
+  width: 95%;
+}
+
+#maneuversFieldSet {
+  position: absolute;
+  width: 50%;
+  height: 80%;
+  left: 45%;
+  background-color: white;
+}
+
+#maneuversDiv {
+  height: 100%;
+}
+
+#attackOptionsDiv {
+  height: 100%;
+  display: none;
+}
+
+#defensiveOptionsDiv {
+  height: 100%;
+  display: none;
+}
+
+.guiDivFieldSet {
+  display: inline;
+
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Drawing to the screen</title>
+    <link rel="stylesheet" href="..\css\style.css">
+  </head>
+  <body>
+    <h3>The HTML Canvas</h3>
+    <figure>
+      <canvas id="canvas1" width="300" height="300"></canvas>
+      <figcaption>Drawing of a house using &#60;canvas&#62; methods.</figcaption>
+    </figure>
+    <figure>
+      <canvas id="canvas2" width="300" height="300"></canvas>
+      <figcaption>A triangle: the basis of all 3d meshes.</figcaption>
+    </figure>
+    <figure>
+      <canvas id="canvas3" width="300" height="300"></canvas>
+      <figcaption>Colorful cube rendered using my matrix library.</figcaption>
+    </figure>
+    <p>&emsp;Above are three examples of how I spent my lunch breaks with
+       the &#60;canvas&#62;. The house is drawn using built in tools for
+       the canvas's 2d context. The red triangle is drawn using my library's
+       fillTriangle method. The cube makes use of my matrix library to
+       transform the vertices of a mesh and a z-buffer so triangles are
+       drawn correctly.</p>
+    <p>&emsp;Originally, I was planning to make a couple 2d games
+       for fun. I lost the old files, but I did have snake, breakout,
+       and Conway's Game of Life running using only per-pixel rendering
+       off of the CPU.</p>
+    <p>&emsp;While still using the canvas's basic 2d context,
+       I started teaching myself computer graphics and learned to
+       display three dimensional models. Transforming each vertex
+       in space was relatively easy. I think the hardest part was
+       programming the algorithm to draw triangles.</p>
+    <p>&emsp;The difficulty of the triangles came with finding a
+       good enough algorithm. The Fundamentals of Computer Graphics
+       suggested using barycentric coordinates for two naitive solutions.
+       The first (and worst) was to pole every pixel on the screen and
+       check if they were inside the triangle. The second (and vastly
+       improved solution) was to pole only the pixels inside a rectangle
+       that bonds the triangle.</p>
+    <p>&emsp;I used the second solution for a while until I decided to
+       use a DDA (Digital Differential Analysis) solution used in a
+       youtuber's windows console game engine. I assumed it was faster
+       because it didn't consider pixels outside the triangle. However,
+       I moved onto using WebGL before learning how to use the browser's
+       built in tools for diagnostics.</p>
+    <script src="..\scripts\GfxMath.js" type="text/javascript"></script>
+    <script src="..\scripts\screenManager.js" type="text/javascript"></script>
+    <script src="..\scripts\shapeMaker.js" type="text/javascript"></script>
+    <script src="..\scripts\canvas1.js" type="text/javascript"></script>
+  </body>
+</html>
