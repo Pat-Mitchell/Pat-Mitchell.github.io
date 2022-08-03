@@ -1,0 +1,11 @@
+.linkToGame {
+  text-align: center;
+}
+
+.linkToGame:first-of-type:first-letter {
+  font-family: inherit;
+  font-size: inherit;
+  padding: inherit;
+  margin: inherit;
+  float: none;
+}

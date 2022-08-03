@@ -1,0 +1,32 @@
+article = {
+  author:`Pat Mitchell`,
+  date:`Wednesday August 3, 2022`,
+  previousArticle:`1_0-Recreation`,
+  previousArticleTitle:`Recreating the Original`,
+  nextArticle:null,
+  nextArticleTitle:null,
+  title:`Adding More Combat Options`,
+  body:`
+  <p>The combat options in the original were very bare, so
+     it's time to add depth. A lot of depth.</p>
+
+  <a href="2_1-Recreation.html"><p class="linkToGame">Link to game</p></a>     
+
+  <p>I'm implemented a portion of the combat
+     system from the tabletop rpg game, GURPS. The system has the player
+     choose between five different combat maneuvers that lead to five
+     different ways to attack and six different ways to defend. Also,
+     "Do nothing" is still an option.</p>
+
+  <p>Since that is a lot of information to take in, there are
+     tooltips available to the user. The user can learn about the system's
+     use of three six sided dice (hereby refered to as 3d6) to determine
+     the outcome of a skill roll and what each of the combat maneuvers
+     mean and how they effect combat.</p>
+
+  <p>In addition to the combat, the player and opponent have
+     stats and skills like in the actual tabletop game. Most of these
+     aren't relevant to combat, however they are a part of the full game.</p>
+
+  `,
+};

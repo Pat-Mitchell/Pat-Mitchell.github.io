@@ -6,74 +6,75 @@
   <link rel="stylesheet" href="..\css\main-style.css">
   <link rel="stylesheet" href="..\css\project-style.css">
 </head>
-<body>
-  <div id="page" class="site">
-    <div id="masthead" class="siteHeader">
-      <div class="siteBranding">
-        <a href="..\index.html">
-          <img src="..\resources\logo.png" id="siteLogo">
-          <img src="..\resources\siteName.png" id="siteName">
-        </a>
+  <body>
+    <div id="page" class="site">
+      <div id="masthead" class="siteHeader">
+        <div class="siteBranding">
+          <a href="..\index.html">
+            <img src="..\resources\logo.png" id="siteLogo">
+            <img src="..\resources\siteName.png" id="siteName">
+          </a>
+        </div>
+        <div class="menuOpen">
+          <img src="..\resources\menu.png" id="menuBtn">
+        </div>
+        <div id="mainMenu" class="mainNav">
+          <ul>
+            <li><img src='../resources/about.png' class="menuIcon"><a href="../index.html">About</a></li>
+            <li><img src='../resources/projects.png' class="menuIcon"><a href="projects.html">Projects</a></li>
+            <li><img src='../resources/contact.png' class="menuIcon">contact</li>
+          </ul>
+        </div>
       </div>
-      <div class="menuOpen">
-        <img src="..\resources\menu.png" id="menuBtn">
-      </div>
-      <div id="mainMenu" class="mainNav">
-        <ul>
-          <li><img src='../resources/about.png' class="menuIcon"><a href="../index.html">About</a></li>
-          <li><img src='../resources/projects.png' class="menuIcon"><a href="projects.html">Projects</a></li>
-          <li><img src='../resources/contact.png' class="menuIcon">contact</li>
-        </ul>
-      </div>
-    </div>
-    <div id="content" class="siteContent">
-      <main>
-        <article class="">
-          <h1 class="articleTitle" id="h1Title"></h1>
-          <hr>
-          <ul class="articleCredits" id="ulCredits"></ul>
-          <div class="ArtNavigation">
-            <div class="inArticleNavigation" id="prevArticle"></div>
-            <div class="inArticleNavigation" id="nextArticle"></div>
-          </div>
-          <div class="articleBody" id="divBody"></div>
-        </article>
-      </main>
+      <div id="content" class="siteContent">
+        <main>
+          <article class="">
+            <h1 class="articleTitle" id="h1Title"></h1>
+            <hr>
+            <ul class="articleCredits" id="ulCredits"></ul>
+            <div class="ArtNavigation">
+              <div class="inArticleNavigation" id="prevArticle"></div>
+              <div class="inArticleNavigation" id="nextArticle"></div>
+            </div>
+            <div class="articleBody" id="divBody"></div>
+          </article>
+        </main>
         <div class="tableOfProjects">
           <div class="rowDiv">
-            <a href="ComputerGraphics/html/introduction.html">
-              <span class="project">
+            <span class="project">
+              <a href="ComputerGraphics/html/introduction.html">
                 <h2>Computer Graphics</h2>
                 <p>A little about how I got into and where I've gone with Computer
                 Graphics.</p>
-              </span>
-            </a>
-            <a href="TurnBasedGame/html/introduction.html">
-              <span class="project">
+              </a>
+            </span>
+            <span class="project">
+              <a href="TurnBasedGame/html/introduction.html">
                 <h2>Turn Based Game</h2>
                 <p>Recreating and improving upon a turn based fighting game
                 that was posted in some old defunct forum.</p>
-              </span>
-            </a>
-            <a href="ComputerGraphics/html/introduction.html">
-              <span class="project">
+              </a>
+            </span>
+            <span class="project">
+              <a href="ComicbookCollectiontracker/html/introduction.html">
+                <h2>Comicbook Collection Tracker</h2>
+                <p>I collect comics as a hobby and the collection gets
+                large very fast. I've accidentally bought issues I already
+                have as well as skipping issues I thought I had.</p>
+              </a>
+            </span>
+            <span class="project">
+              <a href="ComputerGraphics/html/introduction.html">
                 <h2>Computer Graphics</h2>
                 <p>A little about how I got into and where I've gone with Computer
                 Graphics.</p>
-              </span>
-            </a>
-            <a href="ComputerGraphics/html/introduction.html">
-              <span class="project">
-                <h2>Computer Graphics</h2>
-                <p>A little about how I got into and where I've gone with Computer
-                Graphics.</p>
-              </span>
-            </a>
+              </a>
+            </span>
           </div>
         </div>
       </div>
     </div>
-  <script src="../articles/02Projects.json" type="text/javascript"></script>
-  <script src="../scripts/main-script.js" type="text/javascript"></script>
-</body>
+    <script src="../articles/02Projects.json" type="text/javascript"></script>
+    <script src="../scripts/main-script.js" type="text/javascript"></script>
+  </body>
 </html>
