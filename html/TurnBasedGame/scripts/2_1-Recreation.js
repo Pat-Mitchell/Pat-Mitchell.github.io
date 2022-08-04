@@ -83,38 +83,61 @@ let defenseSelections = [
 let maneuversFieldSet = document.getElementById("maneuversFieldSet");
 let maneuversDiv = document.getElementById("maneuversDiv");
 let guiSelectionLegend = document.getElementById("guiSelectionLegend");
+let battleLogTxt = document.getElementById("battleLogTxt");
+let battleLogFieldSet = document.getElementById("battleLogFieldSet");
 
 let selectors = document.getElementsByClassName("selection");
 
 for (i = 0; i < selectors.length; i++) {
   selectors[i].addEventListener("mouseover", function() {
-    this.firstChild.innerHTML = "&bull;";
+    this.firstChild.src = "..\\resources\\selected.png";
   });
   selectors[i].addEventListener("mouseout", function() {
-    this.firstChild.innerHTML = "&loz;";
+    this.firstChild.src = "..\\resources\\unselected.png";
   });
 }
+
+let selectedManeuvers = [];
+let nextTurn = false;
 
 maneuverSelections.forEach(e => {
   e.addEventListener("click", function() {
     guiSelectionLegend.innerHTML = "Attack Options";
-    maneuversDiv.style.display = "none";
-    attackOptionsDiv.style.display = "initial";
+    maneuversDiv.style.visibility = "hidden";
+    attackOptionsDiv.style.visibility = "visible";
+    selectedManeuvers.push(e.innerHTML.split('>')[1]);
   });
 });
 
 attackSelections.forEach(e => {
   e.addEventListener("click", function() {
     guiSelectionLegend.innerHTML = "Defensive Options";
-    attackOptionsDiv.style.display = "none";
-    defensiveOptionsDiv.style.display = "initial";
+    attackOptionsDiv.style.visibility = "hidden";
+    defensiveOptionsDiv.style.visibility = "visible";
+    selectedManeuvers.push(e.innerHTML.split('>')[1]);
   });
 });
 
 defenseSelections.forEach(e => {
   e.addEventListener("click", function() {
     guiSelectionLegend.innerHTML = "Combat Maneuvers";
-    maneuversFieldSet.style.display = "none";
-    maneuversDiv.style.display = "initial";
+    defensiveOptionsDiv.style.visibility = "hidden";
+    maneuversFieldSet.style.visibility = "hidden";
+    selectedManeuvers.push(e.innerHTML.split('>')[1]);
+    turn(selectedManeuvers);
   });
 });
+
+battleLogFieldSet.addEventListener("click", function() {
+  if(nextTurn) {
+    selectedManeuvers = [];
+    maneuversFieldSet.style.visibility = "visible";
+    maneuversDiv.style.visibility = "visible";
+    nextTurn = false;
+  }
+});
+
+function turn(sm) {
+  nextTurn = true;
+  battleLogTxt.innerHTML = `Player picked ${sm[0]}, ${sm[1]}, ${sm[2]}.`;
+}

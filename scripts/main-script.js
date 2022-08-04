@@ -23,7 +23,7 @@ if(article.previousArticle == null) {
   prevArticle.style.visibility = "hidden";
 } else {
   prevArticle.innerHTML = `
-  <span class="prev-next-icon"></span>
+  <span class="prev-next-icon"><i class="arrow left"></i></span>
   <span class="prev-next-title"><a href="${article.previousArticle}.html">${article.previousArticleTitle}</a></span>
   `;
 }
@@ -32,7 +32,7 @@ if(article.nextArticle == null) {
 } else {
   nextArticle.innerHTML = `
   <span class="next-title"><a href="${article.nextArticle}.html">${article.nextArticleTitle}</a></span>
-  <span class="next-icon"></span>
+  <span class="next-icon"><i class="arrow right"></i></span>
   `;
 }
 body.innerHTML = article.body;

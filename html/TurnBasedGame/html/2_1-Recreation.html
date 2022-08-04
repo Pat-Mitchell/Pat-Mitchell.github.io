@@ -3,10 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>2_1-Recreation</title>
-    <link rel="stylesheet" href="..\css\style.css">
     <link rel="stylesheet" href="..\css\2_1-Recreation.css">
   </head>
   <body>
+    <div id="battleScreen">
+      <div class="stats" id="opponentStats">
+        <span class="statsElement" id="opponentName">Bear</span>
+        <div class="healthBarContainer statsElement">
+          <div class="healthBar" id="opponentHealthBar"></div>
+        </div>
+        <span class="statsElement healthPoints" id="opponentHealthPoints">25/25</span>
+      </div>
+      <div class="stats" id="playerStats">
+        <span class="statsElement" id="playerName">Player</span>
+        <div class="healthBarContainer statsElement">
+          <div class="healthBar" id="playerHealthBar"></div>
+        </div>
+        <span class="statsElement healthPoints" id="playerHealthPoints">35/35</span>
+      </div>
+      <div id="opponentPortrait"><img src="..\resources\bear.png"></div>
+      <div id="playerPortrait"><img src="..\resources\knight.png"></div>
+    </div>
     <div id="guiDiv">
       <fieldset class="guiDivFieldSet" id="battleLogFieldSet">
         <legend>Battle Log</legend>
@@ -17,48 +34,48 @@
         <div id="maneuversDiv">
           <table>
             <tr>
-              <td class="selection" id="selAtk"><span>&loz;</span>Attack</td>
-              <td class="selection" id="selAoa"><span>&loz;</span>All-Out attack</td>
+              <td class="selection" id="selAtk"><img src="..\resources\unselected.png">Attack</td>
+              <td class="selection" id="selAoa"><img src="..\resources\unselected.png">All-Out attack</td>
             </tr>
             <tr>
-              <td class="selection" id="selComAtk"><span>&loz;</span>Committed Attack</td>
-              <td class="selection" id="selDefAtk"><span>&loz;</span>Defensive Attack</td>
+              <td class="selection" id="selComAtk"><img src="..\resources\unselected.png">Committed Attack</td>
+              <td class="selection" id="selDefAtk"><img src="..\resources\unselected.png">Defensive Attack</td>
             </tr>
             <tr>
-              <td class="selection" id="selAod"><span>&loz;</span>All-Out Defense</td>
-              <td class="selection" id="selDoNothing"><span>&loz;</span>Do Nothing</td>
+              <td class="selection" id="selAod"><img src="..\resources\unselected.png">All-Out Defense</td>
+              <td class="selection" id="selDoNothing"><img src="..\resources\unselected.png">Do Nothing</td>
             </tr>
           </table>
         </div>
         <div id="attackOptionsDiv">
           <table>
             <tr>
-              <td class="selection" id="selReg"><span>&loz;</span>Regular</td>
-              <td class="selection" id="selFeint"><span>&loz;</span>Feint</td>
+              <td class="selection" id="selReg"><img src="..\resources\unselected.png">Regular</td>
+              <td class="selection" id="selFeint"><img src="..\resources\unselected.png">Feint</td>
             </tr>
             <tr>
-              <td class="selection" id="selDecAtk"><span>&loz;</span>Deceptive Attack</td>
-              <td class="selection" id="selRapStrk"><span>&loz;</span>Rapid Strike</td>
+              <td class="selection" id="selDecAtk"><img src="..\resources\unselected.png">Deceptive Attack</td>
+              <td class="selection" id="selRapStrk"><img src="..\resources\unselected.png">Rapid Strike</td>
             </tr>
             <tr>
-              <td class="selection" id="selDualStrk"><span>&loz;</span>Dual-Weapon Strike</td>
-              <td class="selection" id="selExtAtk"><span>&loz;</span>Extra Attack</td>
+              <td class="selection" id="selDualStrk"><img src="..\resources\unselected.png">Dual-Weapon Strike</td>
+              <td class="selection" id="selExtAtk"><img src="..\resources\unselected.png">Extra Attack</td>
             </tr>
           </table>
         </div>
         <div id="defensiveOptionsDiv">
           <table>
             <tr>
-              <td class="selection" id="selParry"><span>&loz;</span>Parry</td>
-              <td class="selection" id="selCrsParry"><span>&loz;</span>Cross parry</td>
+              <td class="selection" id="selParry"><img src="..\resources\unselected.png">Parry</td>
+              <td class="selection" id="selCrsParry"><img src="..\resources\unselected.png">Cross parry</td>
             </tr>
             <tr>
-              <td class="selection" id="selSuppParry"><span>&loz;</span>Supported parry</td>
-              <td class="selection" id="selBlock"><span>&loz;</span>Block</td>
+              <td class="selection" id="selSuppParry"><img src="..\resources\unselected.png">Supported parry</td>
+              <td class="selection" id="selBlock"><img src="..\resources\unselected.png">Block</td>
             </tr>
             <tr>
-              <td class="selection" id="selDodge"><span>&loz;</span>Dodge</td>
-              <td class="selection" id="selAcroDodge"><span>&loz;</span>Acrobatic Dodge</td>
+              <td class="selection" id="selDodge"><img src="..\resources\unselected.png">Dodge</td>
+              <td class="selection" id="selAcroDodge"><img src="..\resources\unselected.png">Acrobatic Dodge</td>
             </tr>
           </table>
         </div>
