@@ -12,6 +12,7 @@ class Actor {
   #basicSpeed    // normally (HT+DX)/4 (±5 points per ±0.25 Speed)
   #basicMove     // normally Basic Speed less all fractions (±5 points per ±1 yard/second)
   #basicLift     // normally ST*ST / 5
+  #name
   constructor() {}
   getST()           { return this.#strength;       }
   setST(st)         { this.#strength = st;         }
@@ -39,9 +40,12 @@ class Actor {
   setBasicMove(bm)  { this.#basicMove = bm;        }
   getBasicLift()    { return this.#basicLift;      }
   setBasicLift(bl)  { this.#basicLift = bl;        }
+  getName()         { return this.#name;           }
+  setName(nm)       { this.#name = nm              }
 }
 
 class Player extends Actor {
+  #evaluateBonus = 0 // Bonus from evaluating in combat
   constructor() {
     super();
     this.setST(14);
@@ -57,7 +61,57 @@ class Player extends Actor {
     this.setBasicSpeed((this.getHT() + this.getDX()) * 0.25);
     this.setBasicMove(Math.floor(this.getBasicSpeed()));
     this.setBasicLift(this.getST() * this.getST() / 5);
+    this.setName("Knight");
   }
+  incEvaluate()   { this.#evaluateBonus++;      }
+  getEvaluate()   { return this.#evaluateBonus; }
+  resetEvaluate() { this.#evaluateBonus = 0;         }
+
+  turn(maneuverChoice) {
+    nextTurn = true;
+    switch(maneuverChoice) {
+      case "Attack":
+        this.attack();
+        break;
+      case "All-Out Attack":
+        break;
+      case "Evaluate":
+        this.evaluate();
+        break;
+      case "Feint":
+        break;
+      case "All-Out Defense":
+        break;
+      case "Do Nothing":
+        break;
+      default:
+        console.error(`Something happened`);
+    }
+  }
+
+  attack() {
+    // Make a weapon skill check
+    let dice = [Math.floor(Math.random() * 6 + 1), Math.floor(Math.random() * 6 + 1), Math.floor(Math.random() * 6 + 1)]
+    let skillRoll = dice[0]+dice[1]+dice[2]-this.getEvaluate();
+    let txt = `${this.getName()} rolled a ${skillRoll}!`;
+    if(skillRoll <= 4) txt += `<br>A critical hit!`;
+    else if(skillRoll >= 17) txt += `<br>And it missed!`;
+    battleLogTxt.innerHTML = txt;
+    this.resetEvaluate();
+  }
+
+  evaluate() {
+    // Give +1 skill for a damaging move on next turn only
+    // can stack up to 3 before forced attack
+    if(this.getEvaluate() < 3) {
+      this.incEvaluate();
+      battleLogTxt.innerHTML = `
+        ${this.getName()} decided to evaluate the opponent.<br>
+        Current bonus is ${this.getEvaluate()}`;
+    }
+    else this.attack();
+  }
+
 }
 
 class Opponent extends Actor {
@@ -85,19 +139,10 @@ let bear = new Opponent();
 let maneuverSelections = [
   document.getElementById("selAtk"),
   document.getElementById("selAoa"),
-  document.getElementById("selComAtk"),
-  document.getElementById("selDefAtk"),
+  document.getElementById("selEvaluate"),
+  document.getElementById("selFeint"),
   document.getElementById("selAod"),
   document.getElementById("selDoNothing"),
-];
-
-let attackSelections = [
-  document.getElementById("selReg"),
-  document.getElementById("selFeint"),
-  document.getElementById("selDecAtk"),
-  document.getElementById("selRapStrk"),
-  document.getElementById("selDualStrk"),
-  document.getElementById("selExtAtk"),
 ];
 
 let defenseSelections = [
@@ -132,18 +177,9 @@ let nextTurn = false;
 maneuverSelections.forEach(e => {
   e.addEventListener("click", function() {
     guiSelectionLegend.innerHTML = "Attack Options";
+    maneuversFieldSet.style.visibility = "hidden";
     maneuversDiv.style.visibility = "hidden";
-    attackOptionsDiv.style.visibility = "visible";
-    selectedManeuvers.push(e.innerHTML.split('>')[1]);
-  });
-});
-
-attackSelections.forEach(e => {
-  e.addEventListener("click", function() {
-    guiSelectionLegend.innerHTML = "Defensive Options";
-    attackOptionsDiv.style.visibility = "hidden";
-    defensiveOptionsDiv.style.visibility = "visible";
-    selectedManeuvers.push(e.innerHTML.split('>')[1]);
+    knight.turn(e.innerHTML.split('>')[1]);
   });
 });
 
@@ -165,8 +201,3 @@ battleLogFieldSet.addEventListener("click", function() {
     nextTurn = false;
   }
 });
-
-function turn(sm) {
-  nextTurn = true;
-  battleLogTxt.innerHTML = `Player picked ${sm[0]}, ${sm[1]}, ${sm[2]}.`;
-}
