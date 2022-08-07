@@ -36,7 +36,7 @@ class Actor {
   getBasicSpeed()   { return this.#basicSpeed      }
   setBasicSpeed(bs) { this.#basicSpeed = bs;       }
   getBasicMove()    { return this.#basicMove       }
-  setBasicMove(bm)  { this.#basicMove = bs;        }
+  setBasicMove(bm)  { this.#basicMove = bm;        }
   getBasicLift()    { return this.#basicLift;      }
   setBasicLift(bl)  { this.#basicLift = bl;        }
 }
@@ -44,14 +44,43 @@ class Actor {
 class Player extends Actor {
   constructor() {
     super();
+    this.setST(14);
+    this.setDX(11);
+    this.setIQ(9);
+    this.setHT(11);
+    this.setHP(this.getST());
+    this.setCurrentHP(this.getHP());
+    this.setWill(this.getIQ());
+    this.setPer(this.getIQ());
+    this.setFP(this.getHT());
+    this.setCurrentFP(this.getFP());
+    this.setBasicSpeed((this.getHT() + this.getDX()) * 0.25);
+    this.setBasicMove(Math.floor(this.getBasicSpeed()));
+    this.setBasicLift(this.getST() * this.getST() / 5);
   }
 }
 
 class Opponent extends Actor {
   constructor() {
     super();
+    this.setST(10);
+    this.setDX(10);
+    this.setIQ(4);
+    this.setHT(18);
+    this.setHP(this.getST());
+    this.setCurrentHP(this.getHP());
+    this.setWill(this.getIQ());
+    this.setPer(this.getIQ());
+    this.setFP(this.getHT());
+    this.setCurrentFP(this.getFP());
+    this.setBasicSpeed((this.getHT() + this.getDX()) * 0.25);
+    this.setBasicMove(Math.floor(this.getBasicSpeed()));
+    this.setBasicLift(this.getST() * this.getST() / 5);
   }
 }
+
+let knight = new Player();
+let bear = new Opponent();
 
 let maneuverSelections = [
   document.getElementById("selAtk"),

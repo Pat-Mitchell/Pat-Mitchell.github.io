@@ -1,7 +1,8 @@
 html, body {
   height: 99%;
-  width: 95%;
+  width: 100%;
   font-family: Arial;
+  margin: 5px auto 1px auto
 }
 
 table {
