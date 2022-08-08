@@ -3,8 +3,8 @@ article = {
   date:`Tuesday August 2, 2022`,
   previousArticle:`introduction`,
   previousArticleTitle:`Introduction`,
-  nextArticle:null,
-  nextArticleTitle:null,
+  nextArticle:`webGL`,
+  nextArticleTitle:`Moving to WebGL`,
   title:`Using the HTML Canvas`,
   body:`
   <figure id="figure1">
