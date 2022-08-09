@@ -19,6 +19,6 @@ article = {
   developer time (which is at a very high premium when some projects are
   almost exclusively worked on during lunch breaks). There's also additional
   marketing benefits for myself having experience with GLSL (OpenGL Shading
-  Language).</p>
+  Language), which is used in both WebGL and OpenGL applications.</p>
   `,
 };
