@@ -1,8 +1,12 @@
-html, body {
+html, body{
   height: 99%;
-  width: 100%;
+  width: 99%;
   font-family: Arial;
-  margin: 5px auto 1px auto
+}
+
+body {
+  width: 1000px;
+  margin: 10px auto 0 auto;
 }
 
 table {
@@ -112,10 +116,12 @@ fieldset {
   height: 80%;
   left: 45%;
   background-color: white;
+  visibility: hidden;
 }
 
 #maneuversDiv {
   height: 100%;
+  visibility: hidden;
 }
 
 #attackOptionsDiv {
