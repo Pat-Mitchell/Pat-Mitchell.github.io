@@ -6,6 +6,10 @@ entityMgr.registerEntity(new Player());
 entityMgr.registerEntity(new Opponent());
 
 let menuID = 0, playerID = 1, opponentID = 2;
+opponentHealthPoints.innerHTML = `${entityMgr.getEntityById(opponentID).getCurrentHP()}/${entityMgr.getEntityById(opponentID).getHP()}`;
+playerHealthPoints.innerHTML = `${entityMgr.getEntityById(playerID).getCurrentHP()}/${entityMgr.getEntityById(playerID).getHP()}`;
+playerHealthBar.style.width = `${entityMgr.getEntityById(playerID).getCurrentHP() / entityMgr.getEntityById(playerID).getHP() * 100 + 1}%`;
+opponentHealthBar.style.width = `${entityMgr.getEntityById(opponentID).getCurrentHP() / entityMgr.getEntityById(opponentID).getHP() * 100 + 1}%`;
 
 entityMgr.getEntityById(0).changeState(new PlayerAttackMenu());
 maneuverSelections.forEach(e => {

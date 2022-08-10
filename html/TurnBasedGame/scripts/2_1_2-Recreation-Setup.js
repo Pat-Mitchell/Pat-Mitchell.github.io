@@ -4,8 +4,13 @@
 
 let maneuversFieldSet = document.getElementById("maneuversFieldSet");
 let maneuversDiv = document.getElementById("maneuversDiv");
+let defensiveOptionsDiv = document.getElementById("defensiveOptionsDiv");
 let battleLogTxt = document.getElementById("battleLogTxt");
 let battleLogFieldSet = document.getElementById("battleLogFieldSet");
+let opponentHealthBar = document.getElementById("opponentHealthBar");
+let playerHealthBar = document.getElementById("playerHealthBar");
+let opponentHealthPoints = document.getElementById("opponentHealthPoints");
+let playerHealthPoints = document.getElementById("playerHealthPoints");
 
 let maneuverSelections = [
   document.getElementById("selAtk"),

@@ -82,6 +82,9 @@ class Player extends Actor {
   incEvaluate()   { this.#evaluateBonus++;      }
   getEvaluate()   { return this.#evaluateBonus; }
   resetEvaluate() { this.#evaluateBonus = 0;    }
+  getSkillSword() { return this.#skillSword;    }
+  getSkillBlock() { return this.#skillBlock;    }
+  getSkillDodge() { return this.#skillDodge;    }
 }
 
 class Opponent extends Actor {
@@ -105,6 +108,8 @@ class Opponent extends Actor {
     this.setBasicLift(this.getST() * this.getST() / 5);
     this.setName("Bear");
   }
+  getSkillUnarmed() { return this.#skillUnarmed;  }
+  getSkillBlock()   { return this.#skillBlock;    }
 }
 
 class MenuMngr extends BaseGameEntity {
@@ -145,6 +150,25 @@ class PlayerAttackMenu extends State {
   onMessage(menu, msg) { return false; }
 }
 
+class PlayerDefendMenu extends State {
+  constructor() {
+    super();
+    if(!PlayerDefendMenu._instance) {
+      PlayerDefendMenu._instance = this;
+    }
+  }
+  enter(menu) {
+    maneuversFieldSet.style.visibility = "visible";
+    defensiveOptionsDiv.style.visibility = "visible";
+  }
+  execute(menu) {}
+  exit(menu) {
+    maneuversFieldSet.style.visibility = "hidden";
+    defensiveOptionsDiv.style.visibility = "hidden";
+  }
+  onMessage(menu, msg) { return false; }
+}
+
 class WriteToLog extends State {
   constructor() {
     super();
@@ -157,7 +181,11 @@ class WriteToLog extends State {
     maneuversDiv.style.visibility = "hidden";
   }
   execute(menu) {
-    menu.getTarget().innerHTML = menu.getMessageQueue().shift();
+    if(menu.getMessageQueue().length != 0)
+      menu.getTarget().innerHTML = menu.getMessageQueue().shift();
+    else {
+      dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_doneWithQueue");
+    }
   }
   exit(menu) {}
   onMessage(menu, msg) {
@@ -183,7 +211,58 @@ class MenuMngrGlobalState extends State {
     switch(msg.msg) {
       case "msg_selectionMade":
         menu.changeState(new WriteToLog());
-        dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", msg.extraInfo);
+        switch(msg.extraInfo) {
+          case "Attack":
+            let damage = 0;
+            let txtToWrite = "The player chose to attack!";
+            let skillCheck = entityMgr.getEntityById(msg.sender).getDX() + entityMgr.getEntityById(msg.sender).getSkillSword();
+            let diceRoll = (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
+            if     (diceRoll >= 17)         txtToWrite += "<br>It automatically misses!";
+            else if(diceRoll >= skillCheck) txtToWrite += "<br>It misses!";
+            else if(diceRoll <= 4) {
+              txtToWrite += "<br>It automatically hits!";
+              damage = (skillCheck - diceRoll) * 2;
+            }
+            else if(diceRoll < skillCheck) {
+              damage = (skillCheck - diceRoll);
+              txtToWrite += `<br>The target must defend a potential ${damage} points of damage!`;
+            }
+            dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtToWrite);
+            if(damage == 0) break;
+            txtToWrite = "The bear chooses to block!"
+            skillCheck = entityMgr.getEntityById(2).getDX() + entityMgr.getEntityById(2).getSkillBlock();
+            diceRoll = (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
+            if     (diceRoll >= 17)         txtToWrite += "<br>It automatically fails!";
+            else if(diceRoll >= skillCheck) {
+              txtToWrite += "<br>It fails!";
+              txtToWrite += `<br>${damage} points of damage sustained!`;
+            }
+            else if(diceRoll <= 4) {
+              txtToWrite += "<br>It automatically blocks!";
+              damage = 0;
+            }
+            else if(diceRoll < skillCheck) {
+              damage = damage - (skillCheck - diceRoll);
+              if(damage <= 0) {
+                txtToWrite += "<br>All damage blocked!";
+                damage = 0;
+              }
+              else {
+                txtToWrite += `<br>${damage} points of damage sustained!`;
+              }
+            }
+            entityMgr.getEntityById(opponentID).setCurrentHP(entityMgr.getEntityById(opponentID).getCurrentHP() - damage);
+            dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtToWrite);
+            break;
+        }
+        return true;
+      case "msg_doneWithQueue":
+        menu.getTarget().innerHTML = "";
+        if(menu.getFSM().previousState() instanceof PlayerAttackMenu) {
+          opponentHealthPoints.innerHTML = `${entityMgr.getEntityById(opponentID).getCurrentHP()}/${entityMgr.getEntityById(opponentID).getHP()}`;
+          opponentHealthBar.style.width = `${entityMgr.getEntityById(opponentID).getCurrentHP() / entityMgr.getEntityById(opponentID).getHP() * 100 + 1}%`;
+          menu.changeState(new PlayerDefendMenu());
+        }
         return true;
     }
     return false;

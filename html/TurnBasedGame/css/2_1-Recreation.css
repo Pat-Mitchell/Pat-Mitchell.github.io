@@ -124,16 +124,9 @@ fieldset {
   visibility: hidden;
 }
 
-#attackOptionsDiv {
-  position: relative;
-  top: -100%;
-  height: 100%;
-  visibility: hidden;
-}
-
 #defensiveOptionsDiv {
   position: relative;
-  top: -200%;
+  top: -100%;
   height: 100%;
   visibility: hidden;
 }
