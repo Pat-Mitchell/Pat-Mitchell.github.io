@@ -19,9 +19,6 @@ let maneuverSelections = [
   document.getElementById("selFeint"),
   document.getElementById("selAod"),
   document.getElementById("selDoNothing"),
-];
-
-let defenseSelections = [
   document.getElementById("selParry"),
   document.getElementById("selCrsParry"),
   document.getElementById("selSuppParry"),

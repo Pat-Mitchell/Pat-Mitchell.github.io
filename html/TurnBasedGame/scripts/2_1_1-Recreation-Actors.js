@@ -193,6 +193,17 @@ class WriteToLog extends State {
       case "msg_write":
         menu.getMessageQueue().push(msg.extraInfo);
         return true;
+      case "msg_endOfFight":
+        maneuversFieldSet.style.visibility = "hidden";
+        defensiveOptionsDiv.style.visibility = "hidden";
+        maneuversDiv.style.visibility = "hidden";
+        let winnerMessage = `
+          ${msg.extraInfo} wins!<br>
+          <a href="2_0-Recreation.html">click here to go back!</a>
+          `
+        menu.getMessageQueue().push(winnerMessage);
+        menu.getFSM().update();
+        return true;
     }
     return false; }
 }
@@ -221,7 +232,7 @@ class MenuMngrGlobalState extends State {
             else if(diceRoll >= skillCheck) txtToWrite += "<br>It misses!";
             else if(diceRoll <= 4) {
               txtToWrite += "<br>It automatically hits!";
-              damage = (skillCheck - diceRoll) * 2;
+              damage = (skillCheck - diceRoll);
             }
             else if(diceRoll < skillCheck) {
               damage = (skillCheck - diceRoll);
@@ -254,14 +265,78 @@ class MenuMngrGlobalState extends State {
             entityMgr.getEntityById(opponentID).setCurrentHP(entityMgr.getEntityById(opponentID).getCurrentHP() - damage);
             dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtToWrite);
             break;
+          case "Parry":
+            let damageToPlayer = 0;
+            let txtParry = "The bear swipes at you!";
+            let skillCheckBear = entityMgr.getEntityById(opponentID).getST() + entityMgr.getEntityById(opponentID).getSkillUnarmed();
+            let diceRoll1 = (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
+            if     (diceRoll1 >= 17)             txtParry += "<br>It automatically misses!";
+            else if(diceRoll1 >= skillCheckBear) txtParry += "<br>It misses!";
+            else if(diceRoll1 <= 4) {
+              txtParry += "<br>It automatically hits!";
+              damageToPlayer = (skillCheckBear - diceRoll1);
+            }
+            else if(diceRoll1 < skillCheckBear) {
+              damageToPlayer = (skillCheckBear - diceRoll1);
+              txtParry += `<br>You must defend a potential ${damageToPlayer} points of damage!`;
+            }
+            dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtParry);
+            if(damageToPlayer == 0) break;
+            txtParry = "You chose to parry!"
+            skillCheckBear = entityMgr.getEntityById(1).getDX() + entityMgr.getEntityById(1).getSkillBlock();
+            diceRoll1 = (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
+            if     (diceRoll1 >= 17)         txtParry += "<br>It automatically fails!";
+            else if(diceRoll1 >= skillCheckBear) {
+              txtParry += "<br>It fails!";
+              txtParry += `<br>${damageToPlayer} points of damage sustained!`;
+            }
+            else if(diceRoll1 <= 4) {
+              txtParry += "<br>It automatically parries!";
+              damageToPlayer = 0;
+            }
+            else if(diceRoll1 < skillCheckBear) {
+              damageToPlayer = damageToPlayer - (skillCheckBear - diceRoll1);
+              if(damageToPlayer <= 0) {
+                txtParry += "<br>All damage parried!";
+                damageToPlayer = 0;
+              }
+              else {
+                txtParry += `<br>${damageToPlayer} points of damage sustained!`;
+              }
+            }
+            entityMgr.getEntityById(playerID).setCurrentHP(entityMgr.getEntityById(playerID).getCurrentHP() - damageToPlayer);
+            dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtParry);
+            break;
         }
         return true;
       case "msg_doneWithQueue":
-        menu.getTarget().innerHTML = "";
         if(menu.getFSM().previousState() instanceof PlayerAttackMenu) {
-          opponentHealthPoints.innerHTML = `${entityMgr.getEntityById(opponentID).getCurrentHP()}/${entityMgr.getEntityById(opponentID).getHP()}`;
-          opponentHealthBar.style.width = `${entityMgr.getEntityById(opponentID).getCurrentHP() / entityMgr.getEntityById(opponentID).getHP() * 100 + 1}%`;
-          menu.changeState(new PlayerDefendMenu());
+          if(entityMgr.getEntityById(opponentID).getCurrentHP() <= 0) {
+            opponentHealthPoints.innerHTML = `0/${entityMgr.getEntityById(opponentID).getHP()}`;
+            opponentHealthBar.style.width = `0%`;
+            menu.changeState(new WriteToLog());
+            dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_endOfFight", "Player");
+          }
+          else {
+            menu.getTarget().innerHTML = "Bear is attacking!";
+            opponentHealthPoints.innerHTML = `${entityMgr.getEntityById(opponentID).getCurrentHP()}/${entityMgr.getEntityById(opponentID).getHP()}`;
+            opponentHealthBar.style.width = `${entityMgr.getEntityById(opponentID).getCurrentHP() / entityMgr.getEntityById(opponentID).getHP() * 100 + 1}%`;
+            menu.changeState(new PlayerDefendMenu());
+          }
+        }
+        if(menu.getFSM().previousState() instanceof PlayerDefendMenu) {
+          if(entityMgr.getEntityById(playerID).getCurrentHP() <= 0) {
+            playerHealthPoints.innerHTML = `0/${entityMgr.getEntityById(playerID).getHP()}`;
+            playerHealthBar.style.width = `0%`;
+            menu.changeState(new WriteToLog());
+            dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_endOfFight", "Bear");
+          }
+          else {
+            menu.getTarget().innerHTML = "";
+            playerHealthPoints.innerHTML = `${entityMgr.getEntityById(playerID).getCurrentHP()}/${entityMgr.getEntityById(playerID).getHP()}`;
+            playerHealthBar.style.width = `${entityMgr.getEntityById(playerID).getCurrentHP() / entityMgr.getEntityById(playerID).getHP() * 100 + 1}%`;
+            menu.changeState(new PlayerAttackMenu());
+          }
         }
         return true;
     }

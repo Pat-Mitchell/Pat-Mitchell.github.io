@@ -1,32 +1,55 @@
 article = {
   author:`Pat Mitchell`,
-  date:`Wednesday August 3, 2022`,
+  date:`Wednesday August 11, 2022`,
   previousArticle:`1_0-Recreation`,
   previousArticleTitle:`Recreating the Original`,
   nextArticle:null,
   nextArticleTitle:null,
   title:`Adding More Combat Options`,
   body:`
-  <p>The combat options in the original were very bare, so
-     it's time to add depth. A lot of depth.</p>
+  <p>The combat options in the original were very bare and there was only
+  one real option if the player wanted to win, so I've changed the rules
+  of the battlefield to make the game more entertaining. I've also added
+  graphics, a more dynamic menu, and a lot of backend work.</p>
 
-  <a href="2_1-Recreation.html"><p class="linkToGame">Link to game</p></a>     
+  <a href="2_1-Recreation.html"><p class="linkToGame">Link to game</p></a>
 
-  <p>I'm implemented a portion of the combat
-     system from the tabletop rpg game, GURPS. The system has the player
-     choose between five different combat maneuvers that lead to five
-     different ways to attack and six different ways to defend. Also,
-     "Do nothing" is still an option.</p>
+  <p>I've implemented a small portion of the GURPS tabletop rpg system into
+  the game. Both the player and the bear have different stats and skills
+  used in combat as well as a dice roll that determines whether or not they
+  were successful in attacking or defending. Not all parts of the GURPS combat
+  system are included for now.</p>
 
-  <p>Since that is a lot of information to take in, there are
-     tooltips available to the user. The user can learn about the system's
-     use of three six sided dice (hereby refered to as 3d6) to determine
-     the outcome of a skill roll and what each of the combat maneuvers
-     mean and how they effect combat.</p>
+  <p>A finite state machine (FSM) is used to handle which menus are displayed and to queue
+  up a series of text messages for the menu. Making a choice in the combat
+  maneuvers menu puts the "menu manager" into a state for displaying text to the
+  battle log, then goes back to the combat maneuver state when there are no
+  messages left in the message queue. The winner state is reached when someone's
+  health reaches 0 and the user is informed who won and is given a link back
+  to this page.</p>
 
-  <p>In addition to the combat, the player and opponent have
-     stats and skills like in the actual tabletop game. Most of these
-     aren't relevant to combat, however they are a part of the full game.</p>
+  <p>The player and the bear are both child objects of a Actor class which is
+  a child object to a BaseGameEntity class. The BaseGameEntity class contains
+  methods primarily for working with the FSM and sending messages to and
+  receiving messages from other entities. The Actor class contains all the stats
+  for the player and bear (as well as potential future entities) and encapsulates
+  all variables for safety. Technically, the bear and player weren't communicating
+  with each other and the menu was just sending messages to itself with the user's
+  selections and the text that would get displayed to the battle log.</p>
 
+  <p>The player still has a huge advantage in the fight. A string of unlucky
+  dice rolls can make the fight closer, but the bear is almost always going to
+  lose. I'm a firm believer that weighting the fight in favor of the player when
+  a potential interview in a on the line will generally have a positive benefit
+  for me.</p>
+
+  <p>The most difficult part of this milestone was the combat system. I had
+  completely forgotten that GURPS is designed to be somewhat complicated in order
+  to give the system more depth and customizability. Taking into account various
+  positive and negative modifiers and their conditions would have added weeks or
+  months to dev time (which would have been too long since I want to have many
+  short milestones while my portfolio is small). Most of them interact with
+  eachother or lead to secondary choices with their own bonuses. It's a
+  too much for the arbitrary deadline I gave myself.</p>
   `,
 };
