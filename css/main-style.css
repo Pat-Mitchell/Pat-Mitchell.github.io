@@ -160,6 +160,13 @@ article p:first-line {
 
 .mainNav ul {
   list-style-type: none;
+  text-align: center;
+  margin: 0 0 0 0;
+}
+
+.mainNav li {
+  display: inline;
+  margin: 0 1% 0 1%;
 }
 
 .menuIcon {
