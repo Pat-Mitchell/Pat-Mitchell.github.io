@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Turn Based Game - Introduction</title>
+    <link rel="stylesheet" href="..\..\..\css\main-style.css">
+    <link rel="stylesheet" href="..\css\recreation-style.css">
+  </head>
+  <body>
+    <div id="page" class="site">
+      <div id="masthead" class="siteHeader">
+        <div class="siteBranding">
+          <a href="..\..\..\index.html">
+            <img src="..\..\..\resources\logo.png" id="siteLogo">
+            <img src="..\..\..\resources\siteName.png" id="siteName">
+          </a>
+        </div>
+        <div class="menuOpen">
+          <img src="..\..\..\resources\menu.png" id="menuBtn">
+        </div>
+        <div id="mainMenu" class="mainNav">
+          <ul>
+            <li><img src='../../../resources/about.png' class="menuIcon"><a href="..\..\..\index.html">About</a></li>
+            <li><img src='../../../resources/projects.png' class="menuIcon"><a href="..\..\projects.html">Projects</a></li>
+            <li><img src='../../../resources/contact.png' class="menuIcon">contact</li>
+          </ul>
+        </div>
+      </div>
+      <div id="content" class="siteContent">
+        <main>
+          <article class="">
+            <h1 class="articleTitle" id="h1Title"></h1>
+            <hr>
+            <ul class="articleCredits" id="ulCredits"></ul>
+            <div class="ArtNavigation">
+              <div class="inArticleNavigation" id="prevArticle"></div>
+              <div class="inArticleNavigation" id="nextArticle"></div>
+            </div>
+            <div class="articleBody" id="divBody"></div>
+          </article>
+        </main>
+      </div>
+    </div>
+    <script src="..\articles\tbGame03.json" type="text/javascript"></script>
+    <script src="..\..\..\scripts\main-script.js" type="text/javascript"></script>
+  </body>
+</html>

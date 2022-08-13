@@ -1,0 +1,137 @@
+html, body{
+  height: 99%;
+  width: 99%;
+  font-family: Arial;
+}
+
+body {
+  width: 1000px;
+  margin: 10px auto 0 auto;
+}
+
+table {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+fieldset {
+  border: 2px solid black;
+}
+
+.healthBarContainer {
+  border: 2px solid black;
+  border-radius: 7px;
+  background-color: white;
+  height: 15%;
+  width: 60%;
+  margin-right: 1rem;
+}
+
+.healthBar {
+  height: 100%;
+  width: 80%;
+  background-color: green;
+  border-radius: 6px;
+  margin-left: -1px;
+}
+
+.statsElement {
+  display: block;
+  margin-left: 1rem;
+}
+
+.stats {
+  position: relative;
+  height: 17%;
+  width: 40%;
+  border: 5px solid black;
+  border-radius: 7px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 2rem;
+}
+
+#opponentStats{
+  top: 10%;
+  left: 5%;
+}
+
+#playerStats{
+  top: 55%;
+  left: 55%;
+}
+
+#opponentPortrait {
+  position: relative;
+  top: -27%;
+  left: 60%;
+}
+
+#opponentPortrait img {
+  height: 15rem;
+}
+
+#playerPortrait {
+  position: relative;
+  top: -37%;
+  left: 15%;
+}
+
+#playerPortrait img {
+  height: 18rem;
+}
+
+#battleScreen {
+  position: relative;
+  width: 90%;
+  height: 65%;
+  margin: 0px auto 0px auto;
+  border: 2px solid black;
+}
+
+#guiDiv {
+  position: relative;
+  height: 250px;
+  font-size: 1.5rem;
+  width: 90%;
+  margin: 5px auto 0px auto;
+}
+
+#battleLogFieldSet {
+  position: absolute;
+  height: 80%;
+  width: 95%;
+}
+
+#maneuversFieldSet img {
+  height: 1.5rem;
+  margin: -0.5rem 1rem auto auto;
+  vertical-align: middle;
+}
+
+#maneuversFieldSet {
+  position: absolute;
+  width: 50%;
+  height: 80%;
+  left: 45%;
+  background-color: white;
+  visibility: hidden;
+}
+
+#maneuversDiv {
+  height: 100%;
+  visibility: hidden;
+}
+
+#defensiveOptionsDiv {
+  position: relative;
+  top: -100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.guiDivFieldSet {
+  display: inline;
+
+}

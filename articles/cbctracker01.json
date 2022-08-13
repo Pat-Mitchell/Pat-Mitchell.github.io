@@ -1,0 +1,19 @@
+article = {
+  author:`Pat Mitchell`,
+  date:`Wednesday August 3, 2022`,
+  previousArticle:null,
+  previousArticleTitle:null,
+  nextArticle:null,
+  nextArticleTitle:null,
+  title:`Comicbook Collection Tracker - Introduction`,
+  body:`
+  <p>I enjoy collecting individual issues of comics, but it eventually
+  becomes necessary to track the comics in my collection. I've accidentally
+  bought comics I already own and skipped issues I thought I had. The problem
+  is further compounded while buying multiple issues on eBay where I don't
+  have complete control of which issues I will get and nature of the limited
+  time offers doesn't afford me the greatest luxury.</p>
+
+  <p></p>
+  `,
+};

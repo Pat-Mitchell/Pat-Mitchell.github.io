@@ -1,0 +1,32 @@
+article = {
+  author:`Pat Mitchell`,
+  date:`Tuesday August 2, 2022`,
+  previousArticle:null,
+  previousArticleTitle:null,
+  nextArticle:`canvas1`,
+  nextArticleTitle:`Using the HTML canvas`,
+  title:`Computer Graphics Introduction`,
+  body:`
+  <p>Computer graphics is a topic I found by complete accident. During lunch
+  breaks at work, I'd typically go on the company computer and start
+  programming whatever came to mind to pass the time. I had started
+  programming a few games using the HTML &#60;canvas&#62; element and
+  started looking up various game development videos on YouTube.</p>
+
+  <p>Quaternions, quaternions, quaternions! It was a very frequent topic
+  in most videos and I had never heard of it before. I learned that it was
+  a topic in linear algebra at some point and decided that I had to teach it
+  to myself so I could have more fun during lunch breaks.</p>
+
+  <p>I grabbed a copy of No Bullshit Guide to Linear Algebra by Ivan Savov
+  and went to work. I highly suggest the book. Not only does it cover linear
+  algebra, but the final chapters of the book are devoted to various applications
+  like computer graphics, quantum mechanics, probability theory, and
+  cryptography. It's like a gateway to a whole bunch of projects for this
+  portfolio and an endless number of ways to spend lunch breaks coding on the
+  company computer.</p>
+
+  <p>Thanks to that book, I had graduated my plans from simple 2D graphics to
+  3D graphics since the transition was almost as easy as adding a value
+  for the Z Coordinate.</p>`,
+};

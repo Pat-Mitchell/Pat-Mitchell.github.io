@@ -1,0 +1,20 @@
+#figure1 {
+  float: left;
+}
+
+figure {
+  margin: 0 1rem 1rem 0.5rem;
+  text-align: center;
+}
+
+canvas {
+  height: 10rem;
+  width: 10rem;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 0.8rem;
+  text-align: center;
+  padding-top: 0;
+}

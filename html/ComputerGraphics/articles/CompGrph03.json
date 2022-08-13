@@ -1,0 +1,42 @@
+article = {
+  author:`Pat Mitchell`,
+  date:`Saturday August 13, 2022`,
+  previousArticle:`canvas1`,
+  previousArticleTitle:`Using the HTML canvas`,
+  nextArticle:null,
+  nextArticleTitle:null,
+  title:`Moving to WebGL`,
+  body:`
+  <p>WebGL (Web Graphics Library) is the next step in learning computer
+  graphics. It is still possible to continue learning with the &#60;canvas&#62;'s
+  2D context, however there's a major bottleneck in performance when using only
+  the CPU for drawing to the screen. Per-pixel manipulation is very slow and
+  "creative" solutions are required to improve performance like using multiple
+  &#60;canvas&#62; elements for static elements like ui and predrawing scrolling
+  backgrounds.</p>
+
+  <figure id="figure1">
+    <canvas id="webgl1" width="300" height="300"></canvas>
+    <figcaption>Figure 1: Drawing a single point to the canvas.</figcaption>
+  </figure>
+
+  <p>WebGL offloads the work from the CPU to the GPU and the API decreases
+  developer time (which is at a very high premium when some projects are
+  almost exclusively worked on during lunch breaks). There's also additional
+  marketing benefits for myself having experience with GLSL (OpenGL Shading
+  Language), which is used in both WebGL and OpenGL applications.</p>
+
+  <p>To learn how to use the webGL context, I picked up a copy of WebGL
+  Programming Guide by Kouichi Matsuda and Podger Lea. The examples I have
+  on this page are derived from the book. Some changes were made to the
+  example code from the book because it was first written in 2013 and
+  Javascript has gotten several updates since. For example the keyword "let"
+  replaces most instances of "var" when defining variables because "var" defines
+  globally and creates a high risk of name collision.</p>
+
+  <p>Figure 1 displays the "Hello, World!" of WebGL. Drawing a point to the
+  screen is a fantastic first program to begin with for understanding how to
+  initialize a &#60;canvas&#62; with WebGL and learning the basics of the
+  vertex and fragment shaders.</p>
+  `,
+};
