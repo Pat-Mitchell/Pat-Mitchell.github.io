@@ -1,0 +1,27 @@
+#figure1 {
+  float: right;
+}
+
+#figure2 {
+  float: left;
+}
+
+#figure3 {
+  float: right;
+}
+
+figure {
+  margin: 0 1rem 1rem 0.5rem;
+}
+
+canvas {
+  height: 17rem;
+  width: 17rem;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: -1.25rem;
+}
