@@ -28,7 +28,18 @@ article = {
   <p>Using the work computers created another limitation. The browser would
   refuse to read any local files that aren't javascript, html, or css without
   throwing a CORS error, so the solution for the database is a json file that
-  contains all the relevant information a collector would want to see while
-  browsing their collection.</p>
+  contains  information a collector would want to see while browsing their
+  collection like the series name, issue number, date published, credits, etc.</p>
+
+  <p>All the entries are organized alphabetically by series name. Clicking the
+  name of the series drops down a list of all the issues (organized by number)
+  where the user can select the issue and the information in the database will be
+  displayed in the main panel. The user can also save their collection locally
+  or load a separate collection. Adding a comic to the collection is also as easy
+  as tapping the "New" button and entering all the data for the comic.</p>
+
+  <p>The design of the app is based on older Windows desktop apps because the
+  computers at work were still running Windows XP and I wanted to emulate the
+  design.</p>
   `,
 };
