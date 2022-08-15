@@ -1,0 +1,101 @@
+collection = [
+  {
+    "series" : "Detective_Comics",
+    "displayName" : "Detective Comics",
+    "issue" : "201",
+    "coverDate" : "Jan 2000",
+    "publisher" : "DC",
+    "characters" : ["Batman"],
+    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+  },
+
+  {
+    "series" : "Action_Comics",
+    "displayName" : "Action Comics",
+    "issue" : "342",
+    "coverDate" : "Jan 2000",
+    "publisher" : "DC",
+    "characters" : ["Superman"],
+    "creators" : [["author" , "Alan Moore"], ["penciller" , "Frank Miller"]]
+  },
+
+  {
+    "series" : "Detective_Comics",
+    "displayName" : "Detective Comics",
+    "issue" : "23",
+    "coverDate" : "Jan 2000",
+    "publisher" : "DC",
+    "characters" : ["Batman", "Vickie Vale"],
+    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+  },
+
+  {
+    "series" : "Detective_Comics",
+    "displayName" : "Detective Comics",
+    "issue" : "232",
+    "coverDate" : "Jan 2000",
+    "publisher" : "DC",
+    "characters" : ["Batman", "Robin"],
+    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+  },
+
+  {
+    "series" : "Action_Comics",
+    "displayName" : "Action Comics",
+    "issue" : "451",
+    "coverDate" : "Jan 2000",
+    "publisher" : "DC",
+    "characters" : ["Superman", "Lois Lane"],
+    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+  },
+
+  {
+    "series" : "Micronauts",
+    "displayName" : "Micronauts",
+    "issue" : "663",
+    "coverDate" : "Jan 2000",
+    "publisher" : "Marvel",
+    "characters" : ["Bug", "Bearded Guy", "Tall Dude"],
+    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+  },
+
+  {
+    "series" : "Micronauts",
+    "displayName" : "Micronauts",
+    "issue" : "101",
+    "coverDate" : "Jan 2000",
+    "publisher" : "Marvel",
+    "characters" : [],
+    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+  },
+
+  {
+    "series" : "Micronauts",
+    "displayName" : "Micronauts",
+    "issue" : "27",
+    "coverDate" : "Jan 2000",
+    "publisher" : "Marvel",
+    "characters" : ["Bug"],
+    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+  },
+
+  {
+    "series" : "Micronauts",
+    "displayName" : "Micronauts",
+    "issue" : "237",
+    "coverDate" : "Jan 2000",
+    "publisher" : "Marvel",
+    "characters" : ["Bug", "Bearded Guy", "Tall Dude"],
+    "creators" : []
+  },
+
+  {
+    "series" : "Micronauts",
+    "displayName" : "Micronauts",
+    "issue" : "445",
+    "coverDate" : "Jan 2000",
+    "publisher" : "Marvel",
+    "characters" : ["Bug", "Bearded Guy", "Tall Dude"],
+    "creators" : [["writer", "Bill Gates"]]
+  }
+];

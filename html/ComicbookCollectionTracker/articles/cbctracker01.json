@@ -1,0 +1,34 @@
+article = {
+  author:`Pat Mitchell`,
+  date:`Wednesday August 14, 2022`,
+  previousArticle:null,
+  previousArticleTitle:null,
+  nextArticle:null,
+  nextArticleTitle:null,
+  title:`Comicbook Collection Tracker - Introduction`,
+  body:`
+  <p>I enjoy collecting individual issues of comics, but it eventually
+  becomes necessary to track the comics in my collection. I've accidentally
+  bought comics I already own and skipped issues I thought I had. The problem
+  is further compounded while buying multiple issues on eBay where I don't
+  have complete control of which issues I will get and nature of the limited
+  time offers doesn't afford me the greatest luxury.</p>
+
+  <p>I looked online to see if there was any existing software for comic
+  collections and they do exist. The issue was that they were paid services
+  for something that I was comfortable making a physical list for. Some of
+  them even had monthly subscriptions.</p>
+
+  <p>In the end, I decided that making my own software was the better choice.
+  I believe this project originally started while I was teaching myself computer
+  graphics and I wanted a break from linear algebra and try making a database
+  without using SQL or any server because this project was taking place at work
+  (during lunch breaks) where I'm not allowed to install non-work related programs.</p>
+
+  <p>Using the work computers created another limitation. The browser would
+  refuse to read any local files that aren't javascript, html, or css without
+  throwing a CORS error, so the solution for the database is a json file that
+  contains all the relevant information a collector would want to see while
+  browsing their collection.</p>
+  `,
+};

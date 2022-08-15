@@ -56,6 +56,10 @@ article p:first-line {
   line-height: 1em;
 }
 
+footer {
+  height: 5rem;
+}
+
 .articleCredits {
   margin-top: 0px;
   padding-left: 0;
