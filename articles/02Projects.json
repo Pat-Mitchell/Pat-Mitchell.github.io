@@ -13,5 +13,9 @@ article = {
   for this site is all typed up by myself. I've used actual blogs as references
   for making this site and browsed another online resource to find matching
   colors. Otherwise, site navigation would be "unique" and you might think
-  I was colorblind.</p>`,
+  I was colorblind.</p>
+
+  <p>There is a lot of Javascript being used in these projects and you can use
+  them in your browser. Remember to allow javascript so the demos can function.</p>
+  `,
 };

@@ -41,5 +41,12 @@ article = {
   <p>The design of the app is based on older Windows desktop apps because the
   computers at work were still running Windows XP and I wanted to emulate the
   design.</p>
+
+  <p>I considered removing the save and load features for the "portfolio version",
+  but opted to keep it.</p>
+
+  <p><a href="cbctracker.html" style="text-decoration: underline;">Here's a link
+  to the Comicbook Tracker app.</a> It comes preloaded with a decent portion of
+  my collection. You can add comics or curate your own collection.</p>
   `,
 };
