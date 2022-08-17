@@ -3,7 +3,7 @@ let issbtn = document.getElementsByClassName("issue-btn");
 let topbtn = document.getElementsByClassName("navElement");
 let topNavs = document.getElementsByClassName("navDropdown");
 
-//************* EventListener for Save and Load events **********
+//************* EventListener for Save event **********
 document.getElementById("save_selec").addEventListener("click", function() {
   let a = document.createElement("a");
   document.body.appendChild(a);
@@ -16,6 +16,18 @@ document.getElementById("save_selec").addEventListener("click", function() {
   window.URL.revokeObjectURL(url);
 });
 
+//************* EventListener for clear event **********
+document.getElementById("clear_selec").addEventListener("click", function() {
+  collection = [];
+  seriesArray = [];
+  collectionMap.clear();
+  let elementsToRemove = document.getElementsByClassName("dropdown-btn");
+  while(elementsToRemove.length > 0) {
+    elementsToRemove[0].remove();
+  }
+  document.getElementById('comicCell').innerHTML = ``;
+});
+
 
 //************* EventListener for New Comic function **********
 let newComicBtn = document.getElementById("newcomic-btn");
@@ -24,7 +36,7 @@ newComicBtn.addEventListener("click", function() {
   let newEntry = Object.values(form).reduce((obj,field) => { obj[field.name] = field.value; return obj }, {});
   // console.log(newEntry);
   newEntry.series = newEntry.displayName.replace(/ /g,"_");
-  newEntry.creators = creatReg(newEntry.creators);
+  newEntry.credits = creatReg(newEntry.credits);
 
   // Regex for characters
   tempArr = [];
@@ -189,22 +201,55 @@ function addIssueNavigation() {
 }
 addIssueNavigation();
 
+// NOTICE: This line is to make formatting the info cell faster
+// comment it out when finished. DO NOT DELETE. Useful for future formatting
+// writeToDisplayCell(collectionMap.get("Adventures_of_Superman")["0"]);
+
+
 // ********* Send comic info to info cell ***************
 function writeToDisplayCell(info) {
-  // console.log(info);
 
-  let htmlStr = `<div id="infoDiv"><h1 id="display-name">${info.displayName} #${info.issue}</h1>` +
-                `<p id="date-published">Cover Date: ${info.coverDate}</p>` +
-                `<p id="publisher-info">Publisher: ${info.publisher}</p>` +
-                `<table id="credit-table" class="comic-info-table"><tr><th colspan="2">Credits</th></tr>`;
-  info.creators.forEach(e => {
-    htmlStr += `<tr><td class="credit-title">${e[0]}</td><td class="credit-name">${e[1]}</td></tr>\n`;
+  let htmlStr = `<div id="infoDiv"><h1 id="display-name">${info.displayName} #${info.issue}</h1>
+                <aside>
+                  <figure>
+                    <h3>"${info.chapterName}"</h3>
+                    <img src="${info.coverImage}" id="cover-img">
+                    <figcaption>Cover</figcaption>
+                  </figure>
+                </aside>
+                <div class="comic-info-div">
+                  <p id="date-published">Cover Date: ${info.coverDate}</p>
+                  <p id="publisher-info">Publisher: ${info.publisher}</p>
+                </div>
+                <div class="comic-tables-div">
+                  <table id="credit-table" class="comic-info-table">
+                    <tr>
+                      <th colspan="2">Credits</th>
+                    </tr>
+                `;
+
+  info.credits.forEach(e => {
+    htmlStr += `    <tr>
+                      <td class="credit-title">${e[0]}</td>
+                      <td class="credit-name">${e[1]}</td>
+                    </tr>
+                `;
   });
-  htmlStr += `</table><br>\n`;
-  htmlStr += `<table id="character-table" class="comic-info-table"><tr><th>Characters</th></tr>\n`;
+  htmlStr += `    </table><br>
+                  <table id="character-table" class="comic-info-table">
+                    <tr>
+                      <th>Characters</th>
+                    </tr>
+              `;
   info.characters.forEach(e => {
-    htmlStr += `<tr><td>${e}</td></tr>\n`;
+    htmlStr += `    <tr>
+                      <td>${e}</td>
+                    </tr>
+               `;
   });
-  htmlStr += `</table></div>\n`;
+  htmlStr += `    </table>
+                </div>
+              </div>
+             `;
   document.getElementById('comicCell').innerHTML = htmlStr;
 }

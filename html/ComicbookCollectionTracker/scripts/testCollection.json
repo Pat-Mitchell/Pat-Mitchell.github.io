@@ -1,12 +1,24 @@
 collection = [
   {
+    "series" : "Adventures_of_Superman",
+    "displayName" : "Adventures of Superman",
+    "issue" : "452",
+    "chapterName" : "Hell Beyond",
+    "coverDate" : "Mar 1989",
+    "publisher" : "DC",
+    "characters" : ["Superman", "Lex Luthor", "Morgan Edge"],
+    "credits" : [["writer", "Dan Jurgens"], ["penciller", "Dan Jurgens"], ["inker", "Dennis Janke"], ["colourist", "Glenn Whitmore"], ["letterer", "John Costanza"], ["editors", "Mike Carlin, Renee Witterstaetter"]],
+    "coverImage" : "https://static.wikia.nocookie.net/marvel_dc/images/d/d6/Adventures_of_Superman_Vol_1_452.jpg/revision/latest?cb=20081227005748",
+  },
+
+  {
     "series" : "Detective_Comics",
     "displayName" : "Detective Comics",
     "issue" : "201",
     "coverDate" : "Jan 2000",
     "publisher" : "DC",
     "characters" : ["Batman"],
-    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+    "credits" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
   },
 
   {
@@ -16,7 +28,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "DC",
     "characters" : ["Superman"],
-    "creators" : [["author" , "Alan Moore"], ["penciller" , "Frank Miller"]]
+    "credits" : [["author" , "Alan Moore"], ["penciller" , "Frank Miller"]]
   },
 
   {
@@ -26,7 +38,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "DC",
     "characters" : ["Batman", "Vickie Vale"],
-    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+    "credits" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
   },
 
   {
@@ -36,7 +48,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "DC",
     "characters" : ["Batman", "Robin"],
-    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+    "credits" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
   },
 
   {
@@ -46,7 +58,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "DC",
     "characters" : ["Superman", "Lois Lane"],
-    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+    "credits" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
   },
 
   {
@@ -56,7 +68,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "Marvel",
     "characters" : ["Bug", "Bearded Guy", "Tall Dude"],
-    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+    "credits" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
   },
 
   {
@@ -66,7 +78,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "Marvel",
     "characters" : [],
-    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+    "credits" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
   },
 
   {
@@ -76,7 +88,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "Marvel",
     "characters" : ["Bug"],
-    "creators" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
+    "credits" : [["writer", "Bill Gates"], ["illustrator", "Steve Jobs"]]
   },
 
   {
@@ -86,7 +98,7 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "Marvel",
     "characters" : ["Bug", "Bearded Guy", "Tall Dude"],
-    "creators" : []
+    "credits" : []
   },
 
   {
@@ -96,6 +108,6 @@ collection = [
     "coverDate" : "Jan 2000",
     "publisher" : "Marvel",
     "characters" : ["Bug", "Bearded Guy", "Tall Dude"],
-    "creators" : [["writer", "Bill Gates"]]
+    "credits" : [["writer", "Bill Gates"]]
   }
 ];

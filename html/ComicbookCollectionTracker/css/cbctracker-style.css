@@ -148,29 +148,3 @@ input {
   color: white;
   background-color: #000a81;
 }
-
-.comic-info-table {
-  margin-left: 10px;
-  width: 300px;
-  font-size: 17px;
-  letter-spacing: 3px;
-  border: 1px outset;
-  border-collapse: collapse;
-}
-
-.comic-info-table td{
-  font-size: 15px;
-  text-align: left;
-}
-
-#date-published {
-  margin-top: -10px;
-}
-
-#publisher-info {
-  margin-top: -20px;
-}
-
-#character-list {
-  float: left;
-}

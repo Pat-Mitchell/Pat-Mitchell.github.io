@@ -59,6 +59,7 @@ class Player extends Actor {
   #evaluateBonus = 0 // Bonus from evaluating in combat
   #skillSword = 3;
   #skillBlock = 2;
+  #skillParry = 2;
   #skillDodge = 1;
   constructor() {
     super();
@@ -84,6 +85,7 @@ class Player extends Actor {
   resetEvaluate() { this.#evaluateBonus = 0;    }
   getSkillSword() { return this.#skillSword;    }
   getSkillBlock() { return this.#skillBlock;    }
+  getSkillParry() { return this.#skillParry;    }
   getSkillDodge() { return this.#skillDodge;    }
 }
 
@@ -283,7 +285,7 @@ class MenuMngrGlobalState extends State {
             dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtParry);
             if(damageToPlayer == 0) break;
             txtParry = "You chose to parry!"
-            skillCheckBear = entityMgr.getEntityById(1).getDX() + entityMgr.getEntityById(1).getSkillBlock();
+            skillCheckBear = entityMgr.getEntityById(1).getDX() + entityMgr.getEntityById(1).getSkillParry();
             diceRoll1 = (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
             if     (diceRoll1 >= 17)         txtParry += "<br>It automatically fails!";
             else if(diceRoll1 >= skillCheckBear) {
@@ -307,6 +309,48 @@ class MenuMngrGlobalState extends State {
             entityMgr.getEntityById(playerID).setCurrentHP(entityMgr.getEntityById(playerID).getCurrentHP() - damageToPlayer);
             dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtParry);
             break;
+          case "Block":
+            let damageToBlock = 0;
+            let txtBlock = "The bear swipes at you!";
+            let skillCheck1 = entityMgr.getEntityById(opponentID).getST() + entityMgr.getEntityById(opponentID).getSkillUnarmed();
+            let diceRoll2 = (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
+            if     (diceRoll2 >= 17)             txtBlock += "<br>It automatically misses!";
+            else if(diceRoll2 >= skillCheck1) txtBlock += "<br>It misses!";
+            else if(diceRoll2 <= 4) {
+              txtBlock += "<br>It automatically hits!";
+              damageToPlayer = (skillCheck1 - diceRoll2);
+            }
+            else if(diceRoll2 < skillCheck1) {
+              damageToBlock = (skillCheck1 - diceRoll2);
+              txtBlock += `<br>You must defend a potential ${damageToBlock} points of damage!`;
+            }
+            dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtBlock);
+            if(damageToBlock == 0) break;
+            txtBlock = "You chose to block!"
+            diceRoll2 = entityMgr.getEntityById(1).getST() + entityMgr.getEntityById(1).getSkillBlock();
+            diceRoll2 = (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1) + (Math.floor(Math.random() * 6) + 1);
+            if     (diceRoll2 >= 17)         txtBlock += "<br>It automatically fails!";
+            else if(diceRoll2 >= skillCheck1) {
+              txtBlock += "<br>It fails!";
+              txtBlock += `<br>${damageToBlock} points of damage sustained!`;
+            }
+            else if(diceRoll2 <= 4) {
+              txtBlock += "<br>It automatically block!";
+              damageToBlock = 0;
+            }
+            else if(diceRoll2 < skillCheck1) {
+              damageToBlock = damageToBlock - (skillCheck1 - diceRoll2);
+              if(damageToBlock <= 0) {
+                txtBlock += "<br>All damage blocked!";
+                damageToBlock = 0;
+              }
+              else {
+                txtBlock += `<br>${damageToBlock} points of damage sustained!`;
+              }
+            }
+              entityMgr.getEntityById(playerID).setCurrentHP(entityMgr.getEntityById(playerID).getCurrentHP() - damageToBlock);
+              dispatch.dispatchMessage(menu.id(), menu.id(), 0, "msg_write", txtBlock);
+              break;
         }
         return true;
       case "msg_doneWithQueue":

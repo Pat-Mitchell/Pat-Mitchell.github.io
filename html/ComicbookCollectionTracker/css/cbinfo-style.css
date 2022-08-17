@@ -1,0 +1,57 @@
+aside {
+  float: right;
+  padding: 10px 30px 30px 30px;
+  margin-right: 150px;
+  border: outset;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+}
+
+figcaption {
+  font-weight: bold;
+  color: grey;
+}
+
+.comic-info-table {
+  margin-left: 10px;
+  width: 300px;
+  font-size: 17px;
+  letter-spacing: 3px;
+  border: 1px outset;
+  border-collapse: collapse;
+}
+
+.comic-info-table td{
+  font-size: 15px;
+  text-align: left;
+}
+
+.comic-info-div {
+  width: 500px;
+}
+
+.comic-info-div p {
+  text-align: center;
+  margin: 0;
+}
+
+.comic-tables-div {
+  width: 500px;
+  margin-top: 50px;
+}
+
+.comic-tables-div table {
+  margin: 0 auto 0 auto;
+}
+
+#character-list {
+  float: left;
+}
+
+#cover-img {
+  border: 1px solid black;
+  height: 500px;
+}

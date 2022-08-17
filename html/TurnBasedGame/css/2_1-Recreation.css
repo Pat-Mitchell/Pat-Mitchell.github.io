@@ -5,7 +5,7 @@ html, body{
 }
 
 body {
-  width: 1000px;
+  width: 1200px;
   margin: 10px auto 0 auto;
 }
 
@@ -53,39 +53,39 @@ fieldset {
 }
 
 #opponentStats{
-  top: 10%;
-  left: 5%;
+  top: 50px;
+  left: 50px;
 }
 
 #playerStats{
-  top: 55%;
-  left: 55%;
+  top: 280px;
+  left: 570px;
 }
 
 #opponentPortrait {
   position: relative;
-  top: -27%;
-  left: 60%;
+  top: -150px;
+  left: 675px;
 }
 
 #opponentPortrait img {
-  height: 15rem;
+  height: 240px;
 }
 
 #playerPortrait {
   position: relative;
-  top: -37%;
-  left: 15%;
+  top: -195px;
+  left: 150px;
 }
 
 #playerPortrait img {
-  height: 18rem;
+  height: 290px;
 }
 
 #battleScreen {
   position: relative;
-  width: 90%;
-  height: 65%;
+  width: 1000px;
+  height: 525px;
   margin: 0px auto 0px auto;
   border: 2px solid black;
 }
@@ -94,7 +94,7 @@ fieldset {
   position: relative;
   height: 250px;
   font-size: 1.5rem;
-  width: 90%;
+  width: 1000px;
   margin: 5px auto 0px auto;
 }
 

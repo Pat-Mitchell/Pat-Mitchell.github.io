@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Comics</title>
     <link rel="stylesheet" href="..\css\cbctracker-style.css">
+    <link rel="stylesheet" href="..\css\cbinfo-style.css">
   </head>
   <body>
     <table>
@@ -14,6 +15,7 @@
               <div class="dropdownContainer navDropdown" id="fileMenu">
                 <p id="save_selec">Save</p>
                 <p id="load_selec">Load</p>
+                <p id="clear_selec">Clear</p>
               </div>
             <li class="navElement">New</li>
               <div class="dropdownContainer navDropdown" id="newComicDiv">
@@ -31,8 +33,10 @@
                   <input type="text" name="coverDate" value=""><br><br>
                   <label for="characters">Characters:</label>
                   <input name="characters"><br><br>
-                  <label for="creators">Creators:</label>
-                  <input name="creators"><br><br>
+                  <label for="credits">Credits:</label>
+                  <input name="credits"><br><br>
+                  <label for="coverImage">Cover Image Link:</label>
+                  <input name="coverImage"><br><br>
                 </form>
                 <button type="button" id="newcomic-btn">Add Comic</button>
                 <button type="button" id="cancelnew-btn">Cancel</button>
