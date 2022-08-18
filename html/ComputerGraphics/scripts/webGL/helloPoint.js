@@ -1,24 +1,26 @@
 // HelloPoint.js
-// vertex shader program
-let VSHADER_SOURCE = `
-  attribute vec4 a_Position;
-  attribute float a_PointSize;
-  void main() {
-    gl_Position = a_Position;
-    gl_PointSize = a_PointSize;
-  }`
-// Fragment shader program
-let FSHADER_SOURCE = `
-  void main() {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-  }`
-function main() {
+
+function helloPoint() {
   // Retrieve <canvas> element
   let canvas1 = document.getElementById(`webgl1`);
   figure1(canvas1);
 }
 
 function figure1(canvas) {
+
+  // vertex shader program
+  let VSHADER_SOURCE = `
+    attribute vec4 a_Position;
+    attribute float a_PointSize;
+    void main() {
+      gl_Position = a_Position;
+      gl_PointSize = a_PointSize;
+    }`
+  // Fragment shader program
+  let FSHADER_SOURCE = `
+    void main() {
+      gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    }`
   // Get the rendering context for webgl
   let gl = getWebGLContext(canvas);
   if(!gl) {

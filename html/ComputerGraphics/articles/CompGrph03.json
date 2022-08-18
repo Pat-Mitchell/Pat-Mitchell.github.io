@@ -38,5 +38,34 @@ article = {
   screen is a fantastic first program to begin with for understanding how to
   initialize a &#60;canvas&#62; with WebGL and learning the basics of the
   vertex and fragment shaders.</p>
+
+  <figure id="figure2">
+    <canvas id="webgl2" width="300" height="300"></canvas>
+    <div>
+      <button type="button" onclick="up()" id="btnUp">UP</button>
+      <button type="button" onclick="down()" id="btnDown">DOWN</button>
+      <button type="button" onclick="right()" id="btnRight">RIGHT</button>
+      <button type="button" onclick="left()" id="btnLeft">LEFT</button>
+      <button type="button" onclick="rotFaster()" id="btnFaster">FASTER</button>
+      <button type="button" onclick="rotSlower()" id="btnSlower">SLOWER</button>
+    </div>
+    <figcaption>Figure 2: Rotating triangle with buttons.</figcaption>
+  </figure>
+
+  <p>Figure 2 displays a colorful rotating triangle who's position and rotation
+  speed can be adjusted by the user using the buttons uder the figure. Using
+  the GLSL shader programming language makes shading a lot faster and easier.
+  I had originally impleted vertex based shading in my 2D contex computer graphics
+  engine. However, I felt that interpolating the color of each fragment using
+  barycentric coordinates would have impacted performance too much and settled
+  for a flat shader where each tri had a single color instead of each vertex.</p>
+
+  <p>Figure 2 also doesn't appear in the WebGL book exactly as shown here. The
+  original example is a spinning red triangle instead of a multi-colored one.
+  I felt it necessary to combine concepts taught in multiple chapters to
+  show that I can do more than just copy straight from the book. The book example
+  is just an equilateral solid red triangle while this one is varies the color
+  based on where the fragment is in relation to the vertices and positions of the
+  vertices are scaled 150% in the x direction and 75% in the y direction.</p>
   `,
 };
