@@ -48,5 +48,12 @@ article = {
   <p><a href="cbctracker.html" style="text-decoration: underline;">Here's a link
   to the Comicbook Tracker app.</a> It comes preloaded with a decent portion of
   my collection. You can add comics or curate your own collection.</p>
+
+  <p>There is an issue with displaying the cover image on Github Pages. I did
+  not want to store the cover image locally to save on hard drive space, so the
+  page is supposed to grab the image from a comic book wiki page. It works
+  while running the page locally, but returns a 404 error while running on github.
+  I don't know what is causing the issue. The link is correct because you can
+  right click -> open image to new tab and the correct cover image appears.</p>
   `,
 };
