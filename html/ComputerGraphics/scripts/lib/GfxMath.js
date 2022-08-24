@@ -122,7 +122,7 @@ class Matrix4 {
    * Transpose matrix
    * @return this
    */
-  tranpose() {
+  transpose() {
     let e = this.elements;
     let t; // temp variable for swap
 
@@ -478,9 +478,9 @@ class Matrix4 {
     sz *= rls;
 
     // Calculate cross product of s and f.
-    ux = sy * fz - sz * fy;
-    uy = sz * fx - sx * fz;
-    uz = sx * fy - sy * fx;
+    let ux = sy * fz - sz * fy;
+    let uy = sz * fx - sx * fz;
+    let uz = sx * fy - sy * fx;
 
     // Set to this.
     let e = this.elements;
@@ -507,7 +507,7 @@ class Matrix4 {
     // Translate.
     return this.translate(-eyeX, -eyeY, -eyeZ);
   }
-  lookat(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
+  lookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
     return this.concat(new Matrix4().setLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ));
   };
   /*

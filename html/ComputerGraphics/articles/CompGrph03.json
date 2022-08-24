@@ -1,6 +1,6 @@
 article = {
   author:`Pat Mitchell`,
-  date:`Saturday August 13, 2022`,
+  date:`Saturday August 24, 2022`,
   previousArticle:`canvas1`,
   previousArticleTitle:`Using the HTML canvas`,
   nextArticle:null,
@@ -67,5 +67,31 @@ article = {
   is just an equilateral solid red triangle while this one is varies the color
   based on where the fragment is in relation to the vertices and positions of the
   vertices are scaled 150% in the x direction and 75% in the y direction.</p>
+
+  <figure id="figure3">
+    <canvas id="webgl3" width="300" height="300"></canvas>
+    <figcaption>Figure 3: Click and draggable lighted cube.</figcaption>
+  </figure>
+
+  <p>Figure 3 displays another interactive canvas with a textured cube and
+  in directional lighting. The rgb values of the light are being controled
+  by three sinusoid functions out of phase with eachother by 2/3 Pi. It's
+  another modified example from the book. The original example was only about
+  putting a texture on a model and how GLSL uses a separate coodinate system
+  for texels. The lighting was taken from another chapter where the examples
+  were only single colored cubes or a sphere.</p>
+
+  <p>The changing light was just a curiousity. The book did not go over shaping
+  functions for shading. There was one early example of linear shading based on
+  the fragment's x and y values on the canvas, but that was to show off WebGL's
+  coordinate system. Sinusoidal functions seemed easy enough to implement to
+  change the color over time. Each rgb value is out of phase with the other
+  two by &#177;2/3 Pi so there's always at least one color on at any time and
+  any rgb negative rgb value is read as 0.0.</p>
+
+  <figure id="figure4">
+    <canvas id="webgl4" width="300" height="300"></canvas>
+    <figcaption>Figure 4: Cube in fog.</figcaption>
+  </figure>
   `,
 };
