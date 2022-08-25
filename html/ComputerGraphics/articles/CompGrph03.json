@@ -93,5 +93,12 @@ article = {
     <canvas id="webgl4" width="300" height="300"></canvas>
     <figcaption>Figure 4: Cube in fog.</figcaption>
   </figure>
+
+  <p>Figure 4 is an example from the book used to demonstrate visual effects that
+  can be created with shaders. The "fog factor" is controled by a linear
+  equation that starts at 1.0 (no frament is obscured) to 0.0 (completely obscured).
+  The linear equation "starts" at some distance from the eye. Until then, there
+  is no obscurity. The user can control the start distance with the up and down
+  arrow keys.</p>
   `,
 };
