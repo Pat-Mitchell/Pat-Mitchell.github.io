@@ -1,0 +1,65 @@
+<h1 class="articleTitle" id="h1Title">Computer Graphics Introduction</h1>
+<hr>
+<ul class="articleCredits" id="ulCredits">
+  <li>By Pat Mitchell</li>
+  <li>Tuesday August 2, 2022</li>
+</ul>
+<div class="ArtNavigation">
+  <div class="inArticleNavigation" id="prevArticle">Computer Graphics Introduction</div>
+  <div class="inArticleNavigation" id="nextArticle">Moving to WebGL</div>
+</div>
+<div class="articleBody" id="divBody">
+  <figure id="figure1" style="float: right;" onload="hello()">
+    <canvas id="canvas1" width="300" height="300"></canvas>
+    <figcaption>Figure 1: Drawing of a house<br>using built in 2D context.</figcaption>
+  </figure>
+
+  <p>The HTML &#60;canvas&#62; is a fun tool for drawing graphics to the
+  webpage using Javascript. It has two different modes for 2D drawing
+  and using WebGL. For more than half a year at work, I was working with the 2D
+  context to draw two dimensional games and finally three dimensional graphics
+  when I started teach myself about computer graphics using "Fundamentals
+  of Computer Graphics 5th Edition" and "Foundations of Game Engine Development,
+  Volume 1: Mathematics."</p>
+
+  <p>The house in figure 1 is drawn using methods in the 2D context for lines
+  and solid rectangles. It's similar to how the turtle works in Python or
+  a complex Etch A Sketch that can draw in multiple line widths, colors, and
+  even the ability to pick the pen up and down. I'm assuming that this is
+  the intended way to use the &#60;canvas&#62;'s 2D context.</p>
+
+  <figure id="figure2" style="float: left;">
+    <canvas id="canvas2" width="300" height="300"></canvas>
+    <figcaption>Figure 2: A triangle: the<br> basis of all 3d meshes.</figcaption>
+  </figure>
+
+  <p>Figure 2 is the beginning of 3D graphics and the start of making my
+  own methods for drawing to the &#60;canvas&#62;'s 2D context. First of all,
+  there is no built-in method for drawing triangles. I had to go elsewhere to
+  find a reasonable algorithm for drawing triangles. At first, I was using
+  a book's suggested na&#239;ve algorithm where the
+  triangle is bounded in a rectangle and then every pixel in the rectangle
+  is checked to see if it is in the triangle using barycentric coordinates.
+  The current algorithm I'm using uses <b>d</b>igital <b>d</b>ifferential
+  <b>a</b>nalysis (DDA)
+  to find the edge of the triangle and draw a solid line from edge to edge.</p>
+
+  <figure id="figure3"  style="float: right;">
+    <canvas id="canvas3" width="300" height="300"></canvas>
+    <figcaption>Figure 3: Colorful cube rendered using my<br> matrix library.</figcaption>
+  </figure>
+
+  <p>Once triangles are drawing to the screen, I started working on the
+  matrix library used to transform triangles with translation, rotation,
+  and scale transforms. A 4x4 matrix object houses the 16 numbers and various
+  methods to multiply it by some transformation matrix.</p>
+
+  <p>Finally, the vertices are put into a mesh that is currently being rendered
+  in Figure 3. That is a live 3D render that should be running at 60 or 30 frames
+  per second (depending on your device).</p>
+
+  <p>I did go a little further with some basic flat shading, but performance
+  issues started showing up since the 2D context works off of the CPU only, I
+  was using slow per pixel manipulation, and the computers in the workplace
+  were supposed to be used for data entry and not for live rendering.</p>
+</div>

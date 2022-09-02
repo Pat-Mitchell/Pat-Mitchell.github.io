@@ -1,0 +1,19 @@
+<h1 class="articleTitle" id="h1Title">Contact</h1>
+<hr>
+<ul class="articleCredits" id="ulCredits">
+  <li>By Pat Mitchell</li>
+  <li>Tuesday August 23, 2022</li>
+</ul>
+<div class="ArtNavigation">
+  <div class="inArticleNavigation" id="prevArticle"></div>
+  <div class="inArticleNavigation" id="nextArticle"></div>
+</div>
+<div class="articleBody" id="divBody">
+  <p>Please only use my email for potential job offers and questions pertaining
+  projects. As of August 23, 2022, I'm well aware of a lot of issues with
+  the projects. I've been rushing to add them to the portfolio for about three
+  weeks, learning how to make a website portfolio, and working on another project
+  on the side.</p>
+
+  <p>Email: patr.mitchell1@gmail.com</p>
+</div>

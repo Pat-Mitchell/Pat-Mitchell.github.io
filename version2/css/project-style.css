@@ -1,0 +1,38 @@
+.tableOfProjects {
+  width: 80%;
+  margin: 25px auto 0px auto;
+  text-align: center;
+}
+
+.project {
+  display: inline-block;
+  width: 20%;
+  background-image: linear-gradient(#F1F1F2, #BCBABE);
+  box-shadow: -0.3em 0.25em 0.25em #2C2A2E;
+  text-align: justify;
+  text-justify: inter-word;
+  padding: 0 0.5rem 0 0.5rem;
+  margin: 1rem;
+}
+
+.project:hover {
+  background-image: linear-gradient(#D1D1D2, #9C9A9E);
+}
+
+.project h2 {
+  font-size: 1.4rem;
+  color: #19356D;
+}
+
+.project p {
+  font-size: 1rem;
+  color: black;
+}
+
+.project a {
+  text-decoration: none;
+}
+
+a:visited{
+  color:black;
+}
