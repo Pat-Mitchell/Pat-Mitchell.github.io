@@ -1,0 +1,73 @@
+html {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  font-family: Arial;
+}
+
+footer {
+  height: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color:#19356D;
+}
+
+a:visited {
+  color:#19356D;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 5px;
+  color: #19356D;
+}
+
+p {
+  font-size: 1.3rem;
+  padding: 5px;
+}
+
+p:first-of-type:first-letter {
+  font-family: serif;
+  color: #19356D;
+  font-size: 4rem;
+  padding: 10px 3px;
+  float: left;
+}
+
+p:first-line {
+  line-height: 1em;
+}
+
+.ArtNavigation {
+  height: 2.2rem;
+}
+
+.inArticleNavigation {
+  display: inline;
+  font-size: 1.5rem;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  text-align: initial;
+  text-justify: none;
+}
+
+.articleCredits {
+  margin-top: 0px;
+  padding-left: 0;
+}
+
+.articleCredits li {
+  display: inline;
+  margin-right: 10rem;
+}

@@ -9,27 +9,19 @@ btn.addEventListener("click", function() {
   }
 });
 
-function writeToArticle(articleName, scripts = null) {
+function writeToArticle(articleName) {
   let article = document.getElementById("mainArticle");
   fetch(`${articleName}`)
   .then((response)=>response.text())
   .then((data, resolve)=>{
-    article.innerHTML = data;
+    article.innerHTML = `<iframe src="${articleName}" style="width:100%;" frameBorder="0" scrolling="no" id="Iframe"></iframe>`;
   })
   .then((e) => {
-    if(scripts !== null)
-    scripts.forEach((item, i) => {
-      console.log(item);
-    });
+    var frame = document.getElementById("Iframe");
+    frame.onload = function()
+    {
+      frame.style.height =
+      frame.contentWindow.document.body.scrollHeight + 'px';
+    }
   });
-}
-
-function loadScript(script) {
-  const s = document.createElement('script')
-  s.src = script
-  document.head.append(s)
-}
-
-function test() {
-  console.log(`yup`);
 }
