@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\version01.css">
+  </head>
+  <body>
+    <div id="statsDiv">
+      <div class="stats" id="playerStats">
+        <h2>Player</h2>
+        <p id="playerHp">hp: 35/35</p>
+      </div>
+      <div class="stats" id="oppenentStats">
+        <h2>Oppenent</h2>
+        <p id="opponentHp">hp: 25/25</p>
+      </div>
+    </div>
+    <fieldset id="battleLog">
+      <legend>Battle Log</legend>
+      <p id="playerLog"></p>
+      <p id="opponentLog"></p>
+    </fieldset>
+    <div id="playerButtons">
+      <p><button type="button" name="attack" onclick="turn(`attack`)">Attack</button></p>
+      <p><button type="button" name="defend" onclick="turn(`defend`)">Defend</button></p>
+      <p><button type="button" name="doNothing" onclick="turn(`nothing`)">Do Nothing</button></p>
+    </div>
+    <div id="resultDiv"></div>
+    <script src="scripts\version01.js" type="text/javascript"></script>
+  </body>
+</html>

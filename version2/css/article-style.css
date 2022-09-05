@@ -50,6 +50,7 @@ p:first-line {
 
 .ArtNavigation {
   height: 2.2rem;
+  margin: 2rem auto 2rem auto;
 }
 
 .inArticleNavigation {
@@ -60,6 +61,43 @@ p:first-line {
   align-items: center;
   text-align: initial;
   text-justify: none;
+}
+
+#prevArticle {
+  background-image: linear-gradient(to right,#A1D6E2, #81B6C2);
+  float: left;
+  text-align: left;
+  margin-left: 1rem;
+  box-shadow: -0.15em 0.15em 0.1em #2C2A2E;
+}
+
+#nextArticle {
+  background-image: linear-gradient(to right, #81B6C2, #A1D6E2);
+  float: right;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  box-shadow: 0.15em 0.15em 0.1em #2C2A2E;
+}
+
+.arrow {
+  border: solid #19356D;
+  border-width: 0px 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }
 
 .articleCredits {

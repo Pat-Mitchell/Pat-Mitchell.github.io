@@ -78,7 +78,6 @@ function rotateObject() {
   gl.uniform3f(u_LightPosition, 2.3, 4.0, 3.5);
   // Calculate the view projection matrix
   let viewProjMatrix = new Matrix4();
-  console.log(canvas.width);
   viewProjMatrix.setPerspective(30.0, canvas.width / canvas.height, 1.0, 100.0);
   viewProjMatrix.lookAt(3.0, 3.0, 7.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
   // Register the event handler
@@ -238,7 +237,7 @@ function initTextures(gl) {
   // Register the event handler to be called when image loading is completed
   image.onload = function(){ loadTexture(gl, texture, u_Sampler, image); };
   // Tell the browser to load an Image
-  image.src = '../resources/sky.jpg';
+  image.src = 'resources/sky.jpg';
   return true;
 }
 
