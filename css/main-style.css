@@ -1,0 +1,105 @@
+html {
+  width: 100%;
+  height: 99%;
+}
+
+body {
+  width: 100%;
+  height: 99%;
+  margin: 0px;
+  font-family: Arial;
+  background-color: #1995AD;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link{
+  color:#19356D;
+}
+
+a:visited{
+  color:#19356D;
+}
+
+article {
+  background-image: linear-gradient(#F1F1F2, #BCBABE);
+  width: 70%;
+  margin: 25px auto 0 auto;
+  padding: 10px;
+  text-align: justify;
+  text-justify: inter-word;
+  box-shadow: -0.3em 0.25em 0.25em #2C2A2E;
+}
+
+footer {
+  height: 5rem;
+}
+
+.siteBranding {
+  display: inline;
+  padding: 0px;
+  margin: 0px auto 0px 5px;
+}
+
+#siteLogo {
+  width: 70px;
+  height: 70px;
+}
+
+#siteName {
+  width: 415px;
+  height: 70px;
+}
+
+.menuOpen {
+  display: inline;
+  padding: 0px;
+  margin: 0px 5px 0px 0px;
+  float: right;
+}
+
+.menuOpen img {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  margin: 5px 5px 0 0;
+}
+
+.mainNav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-size: 1.6rem;
+}
+
+.mainNav ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 0 0 0 0;
+}
+
+.mainNav li {
+  display: inline;
+  margin: 0 1% 0 1%;
+}
+
+.mainNav li:hover {
+  cursor: pointer;
+}
+
+.menuIcon {
+  width:1.6rem;
+  vertical-align: middle;
+  margin: 0.5rem;
+}
+
+#masthead {
+  width: 100%;
+  position: static;
+  text-align: justify;
+  float: none;
+  background-image: linear-gradient(to bottom right,#A1D6E2, #417682);
+  box-shadow: -0.3em 0.25em 0.25em #2C2A2E;
+}

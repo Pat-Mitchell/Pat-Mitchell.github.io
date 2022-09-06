@@ -1,0 +1,150 @@
+html, body {
+  height: 99%;
+  font-family: "Lato", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+th, td {
+  border-style: outset;
+  border-width: 2px;
+  padding: 2px;
+}
+
+table {
+  background-color: lightgrey;
+  border-style: outset;
+  border-width: 2px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+input {
+  float: right;
+  margin-left: 10px;
+}
+
+.navDropdown > button {
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+.form-title {
+  width: 104%;
+  margin: -9px 0px 5px -9px;
+  padding: 3px;
+  padding-left: 10px;
+  font-weight: bold;
+  color: white;
+  background-image: linear-gradient(to right, #000a81, #0013ff);
+}
+
+.navDropdown {
+  border: 2px outset;
+  position:absolute;
+  text-align: left;
+  background-color: lightgrey;
+  padding: 10px;
+}
+
+.dropdownContainer {
+  display: none;
+  overflow: hidden;
+}
+
+.dropdownContainer > div {
+  background-color: lightgrey;
+  border-style: inset;
+  padding: 2px 0px 1px 10px;
+}
+
+.sidenav, p, .dropdown-btn {
+  font-size: 17px;
+  background: none;
+  text-align: left;
+  outline: none;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.dropdown-btn {
+  width: 98%;
+  margin: 2px;
+  padding: 3px 0px 3px 3px;
+  font-weight: bold;
+  color: white;
+  background-image: linear-gradient(to right, #000a81, #0013ff);
+  border-style: outset;
+  font-size: 20px;
+}
+
+.topnav {
+  color: white;
+  text-align: left;
+  background-image: linear-gradient(to right, #000a81, #0013ff);
+  height: 45px;
+  border: none;
+}
+
+.sidenav {
+  width: 15%;
+  background-color: lightgrey;
+}
+
+.navElement {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 12px 20px 12px 15px;
+  margin-right: -6px;
+  display: inline;
+}
+
+.navElement:hover {
+  background-color: #0000BE;
+}
+
+.sidenav a:hover, .dropdown-btn:hover {
+  color: grey;
+}
+
+#comicCell {
+  background-color: lightgrey;
+  vertical-align: top;
+}
+
+#display-name {
+  margin-top: 0px;
+  padding: 10px 0px 10px 0px;
+  background-image: linear-gradient(to right, #000a81, #0013ff);
+  color: white;
+  border: none;
+}
+
+#infoDiv p {
+  font-size: 23px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+#fileMenu {
+  width: 150px;
+}
+
+#fileMenu p {
+  width: 100%;
+  margin: 0px;
+  margin-left: -20px;
+  padding: 0px;
+  padding-top: 3px;
+  padding-left: 30px;
+}
+
+#fileMenu p:hover {
+  color: white;
+  background-color: #000a81;
+}
