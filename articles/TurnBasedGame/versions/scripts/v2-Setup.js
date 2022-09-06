@@ -23,9 +23,9 @@ let selectors = document.getElementsByClassName("selection");
 
 for (i = 0; i < selectors.length; i++) {
   selectors[i].addEventListener("mouseover", function() {
-    this.firstChild.src = "..\\resources\\selected.png";
+    this.firstChild.src = "resources\\selected.png";
   });
   selectors[i].addEventListener("mouseout", function() {
-    this.firstChild.src = "..\\resources\\unselected.png";
+    this.firstChild.src = "resources\\unselected.png";
   });
 }
