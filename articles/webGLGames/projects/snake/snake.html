@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body onload="main()">
+    <div class="centeredDiv">
+      <canvas id="canvas" width="300" height="300"></canvas>
+      <div id="divMenu">
+        <button type="button" name="button" id="btnStart">START</button>
+        <button class="difficultyBtn" value="0">Easy</button><br>
+        <button class="difficultyBtn" value="1">Medium</button><br>
+        <button class="difficultyBtn" value="2">Hard</button>
+      </div>
+      <div id="scoreDiv">
+        <h2>Score:</h2>
+        <h2 id="txtScore"></h2>
+      </div>
+      <div id="rankDiv">
+        <h2>Rank:</h2>
+        <h2 id="txtRank"></h2>
+      </div>
+      <div id="gameOverDiv">
+        <h1>Game Over!</h1>
+        <button id="btnPlayAgain">Play again</button>
+      </div>
+    </div>
+
+    <center>
+      <p>The classic game of snake!</p>
+      <p>Controls:</p>
+      <ul>
+        <li>w - up</li>
+        <li>s - down</li>
+        <li>a - left</li>
+        <li>d - right</li>
+      </ul>
+      <p>Eat the blue pellets to grow and don't let the snake run into a
+      wall or eat itself!</p>
+    </center>
+    <script src="..\common\doublyLinkedList.js" type="text/javascript"></script>
+    <script src="..\common\controller.js" type="text/javascript"></script>
+    <script src="..\common\gl-util.js" type="text/javascript"></script>
+    <script src="snake.js" type="text/javascript"></script>
+  </body>
+</html>

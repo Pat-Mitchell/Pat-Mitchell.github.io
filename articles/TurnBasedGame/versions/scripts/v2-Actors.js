@@ -201,7 +201,6 @@ class WriteToLog extends State {
         maneuversDiv.style.visibility = "hidden";
         let winnerMessage = `
           ${msg.extraInfo} wins!<br>
-          <a href="2_0-Recreation.html">click here to go back!</a>
           `
         menu.getMessageQueue().push(winnerMessage);
         menu.getFSM().update();

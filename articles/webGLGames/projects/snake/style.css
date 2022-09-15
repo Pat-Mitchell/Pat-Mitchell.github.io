@@ -1,0 +1,111 @@
+html, body {
+  height:99%;
+  width:99%;
+  font-family: sans-serif;
+}
+
+canvas {
+  width: 500px;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+center {
+  position: relative;
+  width: 250px;
+  text-align: left;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+#gameOverDiv {
+  position: absolute;
+  top: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  color: white;
+  font-size: 25px;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  visibility: hidden;
+}
+
+#btnPlayAgain {
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 25px;
+  border-radius: 1rem;
+}
+
+#scoreDiv {
+  position: absolute;
+  top: 0px;
+}
+
+#scoreDiv h2 {
+  display: inline-block;
+}
+
+#rankDiv {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-right: 250px;
+}
+
+#rankDiv h2 {
+  display: inline-block;
+}
+
+.centeredDiv {
+  width: 600px;
+  padding: 50px;
+  position: relative;
+  left: 50%;
+  top: 5%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.difficultyBtn {
+  position: absolute;
+  font-size: 30px;
+  border-radius: 1rem;
+  text-align: center;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+#btnStart {
+  font-size: 50px;
+  display: block;
+  border-radius: 1rem;
+  margin-bottom: 25px;
+}
+
+#divMenu {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-align: left;
+  line-height: 50px;
+  font-size: 30px;
+}

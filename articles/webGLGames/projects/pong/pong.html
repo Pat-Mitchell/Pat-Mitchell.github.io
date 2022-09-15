@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" style="height:99%; width:99%;">
+  <head>
+    <meta charset="utf-8">
+    <title>Pong</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+            integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+            crossorigin="anonymous" defer>
+    </script>
+  </head>
+  <body onload="main()" style="height:99%;">
+    <div style="margin: auto; width: 300px; text-align: center;">
+      <h1 id="scoreBoard"></h1>
+      <canvas id="webgl" width="300" height="300"></canvas>
+      <button id="btnStart" style="position: relative; top: -175px; height: 50px; width:150px; font-size:45px; padding: 0px;">Start</button>
+      <h2 id="winnerText"></h2>
+    </div>
+    <center style="width: 250px; text-align:left; position: relative; left: 50%; -ms-transform: translateX(-50%); transform: translateX(-50%);">
+      <p>The classic game of pong!</p>
+      <p>Controls:</p>
+      <ul>
+        <li>W - Up</li>
+        <li>S - Down</li>
+      </ul>
+      <p>Score five points against the computer opponent to win the match!</p>
+    </center>
+    <script src="..\common\doublyLinkedList.js" type="text/javascript"></script>
+    <script src="..\common\controller.js" type="text/javascript"></script>
+    <script src="pong.js" type="text/javascript"></script>
+  </body>
+</html>

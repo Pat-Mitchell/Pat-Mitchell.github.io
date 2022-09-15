@@ -42,8 +42,7 @@ function turn(action) {
   if(opponentHp <= 0) {
     opponentLogElement.innerHTML += ` and falls dead`;
     resultDiv.innerHTML = `
-      <h1>YOU WON!!!</h1>
-      <p><a href="1_0-Recreation.html">click here to go back</a></p>`;
+      <h1>YOU WON!!!</h1>`;
     resultDiv.style.border = "1px solid #000";
   }
 }
