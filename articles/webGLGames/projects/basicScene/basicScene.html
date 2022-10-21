@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Basic</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+            integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+            crossorigin="anonymous" defer>
+    </script>
+  </head>
+  <body onload="main()">
+    <canvas id="canvas" width="400" height="300" style="width:800px;"></canvas>
+    <h2>Basic Scene</h2>
+    <p>This is the first webGL project I made that made use of GLSL shaders.
+    </p>
+    <p>From the top left, the color data is stored at each vertex and it's interpolated 
+      across the rest of the face and mixes with the color of the other vertices.
+    </p>
+    <p>The next cube is a single color without any shading. The first cube doesn't
+      have lighting or shadows either. The single color of the second cube exagerates it.
+    </p>
+    <p>The next two cubes have basic ambient and directional lighting. The shape of the red
+      cube becomes more obvious compared to the unshaded version and the fourth cube is given
+      a different color on each face.     
+    </p>
+    <p>Unlike most tutorials and lessons in books, there's more than one object and more than
+      one shader in this scene. A difficulty faced in making this demo was making shaders 
+      separate from each cube to lower memory usage. That way, many cube instances can be
+      instantiated without needing to create a unique shader for each one.
+    </p>
+    <script src="..\common\gl-util.js" type="text/javascript"></script>
+    <script src="..\common\shaders.js" type="text/javascript"></script>
+    <script src="basicScene.js" type="text/javascript"></script>
+  </body>
+</html>

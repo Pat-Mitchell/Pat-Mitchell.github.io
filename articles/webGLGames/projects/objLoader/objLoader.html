@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+    integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+    crossorigin="anonymous" defer>
+    </script>
+  </head>
+  <body onload="main()">
+    <canvas id="canvas" width="400" height="300" style="width:800px;"></canvas>
+    <h2>.Obj loader</h2>
+    <p>This demo reads the vertex and normal data from .obj files to display complex meshes.
+    </p>
+    <p>The models are exported directly from Blender. I'm not an artist, so I'm only using
+    the basic icosphere, cube, and suzanne meshes.
+    </p>
+    <p>Before starting this, I was unaware of all the data that an obj file could
+    contain. The main objective of this project was only to read the vertex and normal data from
+    obj files. 
+    </p>
+    <script src="..\common\gl-util.js" type="text/javascript"></script>
+    <script src="..\common\shaders.js" type="text/javascript"></script>
+    <script src="objLoader.js" type="text/javascript"></script>
+  </body>
+</html>
