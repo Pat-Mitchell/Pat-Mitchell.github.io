@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+    integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+    crossorigin="anonymous" defer>
+    </script>
+  </head>
+  <body onload="main()">
+    <canvas id="canvas" width="800" height="600" style="width:800px;"></canvas>
+    <h2>Cube mapped mesh</h2>
+    <p>This project was inspired by just finding the cubeSampler built-in function in OpenGL.</p>
+    <p>Six individual textures are mapped to the different faces of the cube and then basic lighting is added to the scene.</p>
+    <p>Another improvement made is that this cube mesh is smooth shaded insted of flat shaded like in previous demos.
+    The default setting in blender is flat shading and my limited experience with the software lead me to export meshes with surface normals instead of vertex normals.</p>
+    <script src="..\common\gl-util.js" type="text/javascript"></script>
+    <script src="..\common\shaders.js" type="text/javascript"></script>
+    <script src="..\common\objMesh.js" type="text/javascript"></script>
+    <script src="cubemap.js" type="text/javascript"></script>
+  </body>
+</html>
