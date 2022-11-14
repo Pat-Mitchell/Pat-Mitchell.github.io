@@ -48,11 +48,12 @@ class ObjMesh {
   /** getModelViewMat
    * @returns mat4 of the object's model view matrix
    */
-  getModelViewMat() {
+  getModelViewMat(offset = [0., 0., 0.]) {
     let rotQuat = quat.create();
     quat.fromEuler(rotQuat, this.#rotation[0], this.#rotation[1], this.#rotation[2]);
     let mvMatrix = mat4.create();
-    mat4.fromRotationTranslation(mvMatrix, rotQuat, this.#position);
+    let temp = [this.#position[0] - offset[0], this.#position[1] - offset[1], this.#position[2] - offset[2]];
+    mat4.fromRotationTranslation(mvMatrix, rotQuat, temp);
     return mvMatrix;
   }
   /** move
@@ -82,6 +83,19 @@ class ObjMesh {
     this.#rotation[1] += dr[1];
     this.#rotation[2] += dr[2];
   }
+  /** rotateX/Y/X
+   * @param dx/y/z, floating point in degrees
+   * Change the angle of the mesh in degrees on one of the world axis
+   */
+  rotateX(dx) {
+    this.#rotation[0] += dx;
+  }
+  rotateY(dy) {
+    this.#rotation[1] += dy;
+  }
+  rotateZ(dz) {
+    this.#rotation[2] += dz;
+  }
   /** setRotation
    * @param nr, array of length 3 [alpha, beta, gamma]
    * set the rotation of the mesh in world space
@@ -96,11 +110,12 @@ class ObjMesh {
    * @param gl, the gl context
    * @param viewingMatrix, the viewing matrix used by the camera
    */
-  draw(gl, viewingMatrix) {
+  draw(gl, camera) {
     if(typeof this.#shader == `undefined`) return;
     this.#shader.draw(gl, this.#buffers, 
-      {viewVolMatrix:viewingMatrix,
-       mvMatrix:this.getModelViewMat(),
+      {
+       viewVolMatrix:camera.getViewVolume(),
+       mvMatrix:this.getModelViewMat(camera.getPosition()),
        normMatrix:mat4.transpose(mat4.create(), mat4.invert(mat4.create(), this.getModelViewMat()))
       });
   }
