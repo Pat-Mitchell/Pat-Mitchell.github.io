@@ -37,32 +37,28 @@ function main() {
   }
   gl.clearColor(0., 0., 0., 1.);
   gl.clearDepth(1.);
-  // Perspective view volume
-  const aspect = gl.canvas.width / gl.canvas.height;
-  const vertFov = (45 * Math.PI) / 180; // 90 deg vertfov to radians
-  const zNear = 0.1;
-  const zFar = 100.;
-  const projectionMatrix = mat4.create();
-  mat4.perspective(projectionMatrix, vertFov, aspect, zNear, zFar);
+  const mainCamera = new Camera();
+  mainCamera.setPerspective(gl);
   // load mesh data
   const cubeShader = new ObjTextured(gl);
   const cube = new ObjMesh(gl, cubeShader, '..//resources//models//cube//cube2.obj');
   cube.setPosition([0., 0., -7.]);
   tick();
   function tick() {
-    draw(gl, projectionMatrix, cube);
+    draw();
     cube.rotate([0.5, 0., 0.5]);
     requestAnimationFrame(tick);
   }
+  function draw() {
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.enable(gl.CULL_FACE);
+    gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LEQUAL);
+    cube.draw(gl, mainCamera);
+  }
 }
 
-function draw(gl, projectionMatrix, cube) {
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  gl.enable(gl.CULL_FACE);
-  gl.enable(gl.DEPTH_TEST);
-  gl.depthFunc(gl.LEQUAL);
-  cube.draw(gl, projectionMatrix);
-}
+
 
 class ObjTextured extends Shader {
   constructor(gl){
@@ -138,6 +134,21 @@ class ObjTextured extends Shader {
     gl.TEXTURE_CUBE_MAP_POSITIVE_Z,
     gl.TEXTURE_CUBE_MAP_NEGATIVE_Z,
    ];
+   // cube map Texture
+   {
+    let texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
+    faceTextures.forEach((e, i) => {
+      const level = 0;
+      const internalFormat = gl.RGBA;
+      const format = gl.RGBA;
+      const type = gl.UNSIGNED_BYTE;
+      gl.texImage2D(this.faceTargets[i], level, internalFormat, format, type, e);
+    });
+        
+    gl.generateMipmap(gl.TEXTURE_CUBE_MAP);      
+    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    }
   }
   draw(gl, buffers, matrices) {    
     gl.useProgram(this.getProgramInfo().program);
@@ -218,22 +229,6 @@ class ObjTextured extends Shader {
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, spamTexture);
     gl.uniform1i(this.getProgramInfo().uniformLocations.uTexSampler, 0);
-    // cube map Texture
-    {
-      let texture = gl.createTexture();
-      gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
-      faceTextures.forEach((e, i) => {
-        const level = 0;
-        const internalFormat = gl.RGBA;
-        const format = gl.RGBA;
-        const type = gl.UNSIGNED_BYTE;
-        gl.texImage2D(this.faceTargets[i], level, internalFormat, format, type, e);
-      });
-      
-    gl.generateMipmap(gl.TEXTURE_CUBE_MAP);      
-    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-    }
-
     // final draw
     {
       const vertexCount = buffers.iCount;
