@@ -138,21 +138,6 @@ class ObjTextured extends Shader {
     gl.TEXTURE_CUBE_MAP_POSITIVE_Z,
     gl.TEXTURE_CUBE_MAP_NEGATIVE_Z,
    ];
-   // cube map Texture
-   {
-    let texture = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
-    faceTextures.forEach((e, i) => {
-      const level = 0;
-      const internalFormat = gl.RGBA;
-      const format = gl.RGBA;
-      const type = gl.UNSIGNED_BYTE;
-      gl.texImage2D(this.faceTargets[i], level, internalFormat, format, type, e);
-    });
-        
-    gl.generateMipmap(gl.TEXTURE_CUBE_MAP);      
-    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-    }
   }
   draw(gl, buffers, matrices) {    
     gl.useProgram(this.getProgramInfo().program);
@@ -233,6 +218,22 @@ class ObjTextured extends Shader {
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, spamTexture);
     gl.uniform1i(this.getProgramInfo().uniformLocations.uTexSampler, 0);
+    // cube map Texture
+    {
+      let texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
+      faceTextures.forEach((e, i) => {
+        const level = 0;
+        const internalFormat = gl.RGBA;
+        const format = gl.RGBA;
+        const type = gl.UNSIGNED_BYTE;
+        gl.texImage2D(this.faceTargets[i], level, internalFormat, format, type, e);
+      });
+      
+    gl.generateMipmap(gl.TEXTURE_CUBE_MAP);      
+    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    }
+
     // final draw
     {
       const vertexCount = buffers.iCount;
