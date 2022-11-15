@@ -18,6 +18,7 @@ skyTextures[4].src = `..//resources//textures//coldsunset//Cold_Sunset__Cam_0_Fr
 skyTextures[5].src = `..//resources//textures//coldsunset//Cold_Sunset__Cam_1_Back-Z.png`;
 
 const rotationSlider = document.getElementById("rotationSlider");
+const ambiSlider = document.getElementById("ambiSlider");
 
 let rotation = parseFloat(rotationSlider.value);
 
@@ -44,7 +45,8 @@ function main() {
   tick();
 
   function tick() {
-    rotationChange(mainCamera, parseFloat(rotationSlider.value));    
+    rotationChange(mainCamera, parseFloat(rotationSlider.value));
+    monkeyShader.ambiStrenth = parseFloat(ambiSlider.value);
     draw(gl, mainCamera);
     requestAnimationFrame(tick);
   }
@@ -194,6 +196,7 @@ class SkyBoxShader extends Shader{
 }
 
 class TestShader extends Shader {
+  ambiStrenth = 1.;
   constructor(gl, camera){
     super();    
     this.setVSource(`
@@ -222,10 +225,11 @@ class TestShader extends Shader {
       #endif     
       #define inverseLerp(curValue, minValue, maxValue) (curValue - minValue) / (maxValue - minValue)
 
-      varying vec4 v_Normal;
-      varying vec2 v_TextureCoord;
-      varying vec3 v_Position;
-      uniform vec3 u_EyePosition;
+      varying vec4  v_Normal;
+      varying vec2  v_TextureCoord;
+      varying vec3  v_Position;
+      uniform vec3  u_EyePosition;
+      uniform float u_ambiStrength;
 
       float remap(float currentVal, float inMin, float inMax, float outMin, float outMax) {
         return mix(outMin, outMax, inverseLerp(currentVal, inMin, outMax));
@@ -308,8 +312,9 @@ class TestShader extends Shader {
         phongValue = pow(phongValue, 8.);
         vec3 specular = vec3(phongValue);
 
-        vec3 lighting = vec3(0.);
-        lighting = ambient + diffuse + hemi;
+        vec3 lighting = vec3(0.);        
+        lighting = u_ambiStrength * ambient + diffuse + hemi;
+        // lighting = ambient + diffuse + hemi;
 
         vec3 color = baseColor * lighting + specular * (.4 * noiseSample);
         // linear to srgb
@@ -332,6 +337,7 @@ class TestShader extends Shader {
        mvMatrix:     gl.getUniformLocation(this.getShaderProgram(), "u_mvMatrix"),
        uNormMatrix:  gl.getUniformLocation(this.getShaderProgram(), "u_NormMatrix"),
        uEyePosition: gl.getUniformLocation(this.getShaderProgram(), "u_EyePosition"),
+       uAmbiStrenth: gl.getUniformLocation(this.getShaderProgram(), "u_ambiStrength"),
      },
    });
    this.camera = camera;
@@ -416,6 +422,11 @@ class TestShader extends Shader {
       this.getProgramInfo().uniformLocations.uEyePosition,
       this.camera.getPosition()
     );
+    // ambient strength
+    gl.uniform1f(
+      this.getProgramInfo().uniformLocations.uAmbiStrenth,
+      this.ambiStrenth
+    )
     // final draw
     {
       const vertexCount = buffers.iCount;
