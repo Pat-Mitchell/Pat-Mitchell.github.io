@@ -19,6 +19,11 @@ skyTextures[5].src = `..//resources//textures//coldsunset//Cold_Sunset__Cam_1_Ba
 
 const rotationSlider = document.getElementById("rotationSlider");
 const ambiSlider = document.getElementById("ambiSlider");
+const specSlider = document.getElementById("specSlider");
+const diffSlider = document.getElementById("diffSlider");
+const hemiSlider = document.getElementById("hemiSlider");
+
+const lightDocElements = [ambiSlider, specSlider, diffSlider, hemiSlider];
 
 let rotation = parseFloat(rotationSlider.value);
 
@@ -46,7 +51,9 @@ function main() {
 
   function tick() {
     rotationChange(mainCamera, parseFloat(rotationSlider.value));
-    monkeyShader.ambiStrenth = parseFloat(ambiSlider.value);
+    lightDocElements.forEach(e => {
+      monkeyShader.lighting[e.name] = e.value;
+    });
     draw(gl, mainCamera);
     requestAnimationFrame(tick);
   }
@@ -196,7 +203,12 @@ class SkyBoxShader extends Shader{
 }
 
 class TestShader extends Shader {
-  ambiStrenth = 1.;
+  lighting = {
+    ambiStrength: 1.,
+    specStrength: 0.4,
+    diffStrength: 1.,
+    hemiStrength: 1.,
+  }
   constructor(gl, camera){
     super();    
     this.setVSource(`
@@ -230,115 +242,77 @@ class TestShader extends Shader {
       varying vec3  v_Position;
       uniform vec3  u_EyePosition;
       uniform float u_ambiStrength;
+      uniform float u_specularStrength;
+      uniform float u_diffStrength;
+      uniform float u_hemiStrength;
 
       float remap(float currentVal, float inMin, float inMax, float outMin, float outMax) {
         return mix(outMin, outMax, inverseLerp(currentVal, inMin, outMax));
-      }
-
-      vec3 hash( vec3 p ) { // replace this by something better 
-        p = vec3( dot(p,vec3(127.1,311.7, 74.7)),
-              dot(p,vec3(269.5,183.3,246.1)),
-              dot(p,vec3(113.5,271.9,124.6)));
-      
-        return -1.0 + 2.0*fract(sin(p)*43758.5453123);
-      }
-
-      float noise( in vec3 p ) {
-        vec3 i = floor( p );
-        vec3 f = fract( p );
-        
-        vec3 u = f*f*(3.0-2.0*f);
-      
-        return mix(mix(mix( dot( hash( i + vec3(0.0,0.0,0.0) ), f - vec3(0.0,0.0,0.0) ), 
-                            dot( hash( i + vec3(1.0,0.0,0.0) ), f - vec3(1.0,0.0,0.0) ), u.x),
-                       mix( dot( hash( i + vec3(0.0,1.0,0.0) ), f - vec3(0.0,1.0,0.0) ), 
-                            dot( hash( i + vec3(1.0,1.0,0.0) ), f - vec3(1.0,1.0,0.0) ), u.x), u.y),
-                   mix(mix( dot( hash( i + vec3(0.0,0.0,1.0) ), f - vec3(0.0,0.0,1.0) ), 
-                            dot( hash( i + vec3(1.0,0.0,1.0) ), f - vec3(1.0,0.0,1.0) ), u.x),
-                       mix( dot( hash( i + vec3(0.0,1.0,1.0) ), f - vec3(0.0,1.0,1.0) ), 
-                            dot( hash( i + vec3(1.0,1.0,1.0) ), f - vec3(1.0,1.0,1.0) ), u.x), u.y), u.z );
-      }
-
-      float fbm(vec3 p, int octaves, float persistence, float lacunarity) {
-        const int max_iterations = 32;
-        float amplitude = 0.5;
-        float frequency = 1.0;
-        float total = 0.;
-        float normalization = 0.;
-
-        for (int i = 0; i < max_iterations; i++) {
-          if (i >= octaves) break;
-          float noiseValue = noise(p * frequency);
-          total += noiseValue * amplitude;
-          normalization += amplitude;
-          amplitude *= persistence;
-          frequency *= lacunarity;
-        }
-
-        total /= normalization;
-        return total;
       }
 
       void main() {
         // calculate some fbm noise
         vec2 uv = v_TextureCoord;
         vec3 coords = vec3(vec2(uv.x * 25., uv.y * 5.), 1.);
-        float noiseSample = remap(fbm(coords, 4, .5, 2.), -1., 1., 0., 1.);
 
-        vec3 baseColor = vec3(.64, .45, .28) * noiseSample;
+        vec3 baseColor = vec3(.8);
         vec3 normal = v_Normal.xyz;
         normal = normalize(normal);
         // used for the specular highlight
         vec3 viewDirection = normalize(u_EyePosition - v_Position);
 
         // Ambient
-        vec3 ambient = vec3(.2);
+        vec3 ambient = u_ambiStrength * vec3(.2);
 
         // Hemi
         vec3 skyColor = vec3(.0, .3, .6);
         vec3 groundColor = vec3(.6, .3, .1);
         float hemiMix = remap(normal.y, -1., 1., 0., 1.);
         vec3 hemi = mix(groundColor, skyColor, hemiMix);
+        hemi *= u_hemiStrength;
 
         // Diffuse
         vec3 lightDirection = normalize(vec3(1., 1., 1.));
         vec3 lightColor = vec3(.5);
         float dotL = max(0., dot(normal, lightDirection));
-        vec3 diffuse = lightColor * (dotL);
+        vec3 diffuse = lightColor * (dotL) * u_diffStrength;
 
         // Phong specular
         vec3 r = normalize(reflect(-lightDirection, normal));
         float phongValue = max(0., dot(viewDirection, r));
         phongValue = pow(phongValue, 8.);
         vec3 specular = vec3(phongValue);
+        specular *= (u_specularStrength);
 
         vec3 lighting = vec3(0.);        
-        lighting = u_ambiStrength * ambient + diffuse + hemi;
-        // lighting = ambient + diffuse + hemi;
+        lighting = ambient + diffuse + hemi;
 
-        vec3 color = baseColor * lighting + specular * (.4 * noiseSample);
+        vec3 color = baseColor * lighting + specular;
         // linear to srgb
         color = pow(color, vec3(1. / 2.2));
       
         gl_FragColor = vec4(color, 1.);
      }
    `);
-   this.setShaderProgram(initShaderProgram(gl, this.getVSource(), this.getFSource()));
-   this.setProgramInfo({
-     program: this.getShaderProgram(),
-     attribLocations: {
-       aPosition:     gl.getAttribLocation(this.getShaderProgram(), "a_Position"),
-       aColor:        gl.getAttribLocation(this.getShaderProgram(), "a_Color"),
-       aNormal:       gl.getAttribLocation(this.getShaderProgram(), "a_Normal"),
-       aTextureCoord: gl.getAttribLocation(this.getShaderProgram(), "a_TextureCoord"),
-     },
-     uniformLocations: {
-       projMatrix:   gl.getUniformLocation(this.getShaderProgram(), "u_ProjMatrix"),
-       mvMatrix:     gl.getUniformLocation(this.getShaderProgram(), "u_mvMatrix"),
-       uNormMatrix:  gl.getUniformLocation(this.getShaderProgram(), "u_NormMatrix"),
-       uEyePosition: gl.getUniformLocation(this.getShaderProgram(), "u_EyePosition"),
-       uAmbiStrenth: gl.getUniformLocation(this.getShaderProgram(), "u_ambiStrength"),
-     },
+    this.setShaderProgram(initShaderProgram(gl, this.getVSource(), this.getFSource()));
+    this.setProgramInfo({
+      program: this.getShaderProgram(),
+      attribLocations: {
+        aPosition:     gl.getAttribLocation(this.getShaderProgram(), "a_Position"),
+        aColor:        gl.getAttribLocation(this.getShaderProgram(), "a_Color"),
+        aNormal:       gl.getAttribLocation(this.getShaderProgram(), "a_Normal"),
+        aTextureCoord: gl.getAttribLocation(this.getShaderProgram(), "a_TextureCoord"),
+      },
+      uniformLocations: {
+        projMatrix:    gl.getUniformLocation(this.getShaderProgram(), "u_ProjMatrix"),
+        mvMatrix:      gl.getUniformLocation(this.getShaderProgram(), "u_mvMatrix"),
+        uNormMatrix:   gl.getUniformLocation(this.getShaderProgram(), "u_NormMatrix"),
+        uEyePosition:  gl.getUniformLocation(this.getShaderProgram(), "u_EyePosition"),
+        uAmbiStrength: gl.getUniformLocation(this.getShaderProgram(), "u_ambiStrength"),
+        uSpecStrength: gl.getUniformLocation(this.getShaderProgram(), "u_specularStrength"),
+        uDiffStrength: gl.getUniformLocation(this.getShaderProgram(), "u_diffStrength"),
+        uHemiStrength: gl.getUniformLocation(this.getShaderProgram(), "u_hemiStrength"),
+      },
    });
    this.camera = camera;
   }
@@ -424,8 +398,23 @@ class TestShader extends Shader {
     );
     // ambient strength
     gl.uniform1f(
-      this.getProgramInfo().uniformLocations.uAmbiStrenth,
-      this.ambiStrenth
+      this.getProgramInfo().uniformLocations.uAmbiStrength,
+      this.lighting.ambiStrength
+    )
+    // specular strength
+    gl.uniform1f(
+      this.getProgramInfo().uniformLocations.uSpecStrength,
+      this.lighting.specStrength
+    )
+    // diffuse strength
+    gl.uniform1f(
+      this.getProgramInfo().uniformLocations.uDiffStrength,
+      this.lighting.diffStrength
+    )
+    // hemisphere strength
+    gl.uniform1f(
+      this.getProgramInfo().uniformLocations.uHemiStrength,
+      this.lighting.hemiStrength
     )
     // final draw
     {
