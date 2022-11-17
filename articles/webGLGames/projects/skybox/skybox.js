@@ -251,7 +251,6 @@ class TestShader extends Shader {
       }
 
       void main() {
-        // calculate some fbm noise
         vec2 uv = v_TextureCoord;
         vec3 coords = vec3(vec2(uv.x * 25., uv.y * 5.), 1.);
 
@@ -262,7 +261,7 @@ class TestShader extends Shader {
         vec3 viewDirection = normalize(u_EyePosition - v_Position);
 
         // Ambient
-        vec3 ambient = u_ambiStrength * vec3(.2);
+        vec3 ambient = u_ambiStrength * vec3(1.);
 
         // Hemi
         vec3 skyColor = vec3(.0, .3, .6);
