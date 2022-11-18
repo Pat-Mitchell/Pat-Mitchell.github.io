@@ -43,6 +43,29 @@ function main() {
   gl.clearDepth(1.);
 
   const skyBox = new SkyBoxShader(gl);
+
+  // cube map Texture
+  {      
+    faceTargets = [
+      gl.TEXTURE_CUBE_MAP_POSITIVE_X,
+      gl.TEXTURE_CUBE_MAP_NEGATIVE_X,
+      gl.TEXTURE_CUBE_MAP_POSITIVE_Y,
+      gl.TEXTURE_CUBE_MAP_NEGATIVE_Y,
+      gl.TEXTURE_CUBE_MAP_POSITIVE_Z,
+      gl.TEXTURE_CUBE_MAP_NEGATIVE_Z,
+    ];
+    let texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
+    skyTextures.forEach((e, i) => {
+      const level = 0;
+      const internalFormat = gl.RGBA;
+      const format = gl.RGBA;
+      const type = gl.UNSIGNED_BYTE;
+      gl.texImage2D(faceTargets[i], level, internalFormat, format, type, e);
+    });       
+    gl.generateMipmap(gl.TEXTURE_CUBE_MAP);      
+    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+  }
   
   monkeyShader = new TestShader(gl, mainCamera);
   const monkey = new ObjMesh(gl, monkeyShader, '..//resources//models//monkey//monkey2.obj');
@@ -136,14 +159,6 @@ class SkyBoxShader extends Shader{
         uCubeSampler:        gl.getUniformLocation(this.getShaderProgram(), "u_CubeSampler"),
       },
     });
-    this.faceTargets = [
-      gl.TEXTURE_CUBE_MAP_POSITIVE_X,
-      gl.TEXTURE_CUBE_MAP_NEGATIVE_X,
-      gl.TEXTURE_CUBE_MAP_POSITIVE_Y,
-      gl.TEXTURE_CUBE_MAP_NEGATIVE_Y,
-      gl.TEXTURE_CUBE_MAP_POSITIVE_Z,
-      gl.TEXTURE_CUBE_MAP_NEGATIVE_Z,
-    ];
     let positions = new Float32Array([
       -1, -1,
        1, -1,
@@ -151,23 +166,7 @@ class SkyBoxShader extends Shader{
       -1,  1,
        1, -1,
        1,  1,
-    ]);
-
-    // cube map Texture
-    {
-      let texture = gl.createTexture();
-      gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
-      skyTextures.forEach((e, i) => {
-        const level = 0;
-        const internalFormat = gl.RGBA;
-        const format = gl.RGBA;
-        const type = gl.UNSIGNED_BYTE;
-        gl.texImage2D(this.faceTargets[i], level, internalFormat, format, type, e);
-      });       
-    gl.generateMipmap(gl.TEXTURE_CUBE_MAP);      
-    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-    }
-    
+    ]);    
     // Vertex buffer
     this.positions = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, this.positions);
@@ -245,15 +244,16 @@ class TestShader extends Shader {
       #endif     
       #define inverseLerp(curValue, minValue, maxValue) (curValue - minValue) / (maxValue - minValue)
 
-      varying vec4  v_Normal;
-      varying vec2  v_TextureCoord;
-      varying vec3  v_Position;
-      uniform vec3  u_EyePosition;
-      uniform vec3  u_BaseColor;
-      uniform float u_ambiStrength;
-      uniform float u_specularStrength;
-      uniform float u_diffStrength;
-      uniform float u_hemiStrength;
+      varying vec4        v_Normal;
+      varying vec2        v_TextureCoord;
+      varying vec3        v_Position;
+      uniform vec3        u_EyePosition;
+      uniform vec3        u_BaseColor;
+      uniform float       u_ambiStrength;
+      uniform float       u_specularStrength;
+      uniform float       u_diffStrength;
+      uniform float       u_hemiStrength;      
+      uniform samplerCube u_CubeSampler;
 
       float remap(float currentVal, float inMin, float inMax, float outMin, float outMax) {
         return mix(outMin, outMax, inverseLerp(currentVal, inMin, outMax));
@@ -287,6 +287,18 @@ class TestShader extends Shader {
         float phongValue = max(0., dot(viewDirection, r));
         phongValue = pow(phongValue, 8.);
         vec3 specular = vec3(phongValue);
+
+        // Environment Map
+        vec3 envCoord = normalize(reflect(-viewDirection, normal));
+        vec3 envSample = textureCube(u_CubeSampler, envCoord).xyz;
+        specular += envSample;
+
+        // Fresnel
+        float fresnel = 1. - max(dot(viewDirection, normal), 0.);
+        fresnel = pow(fresnel, 2.);
+
+        specular *= fresnel;
+        
         specular *= (u_specularStrength);
 
         vec3 lighting = vec3(0.);        
@@ -318,6 +330,7 @@ class TestShader extends Shader {
         uDiffStrength: gl.getUniformLocation(this.getShaderProgram(), "u_diffStrength"),
         uHemiStrength: gl.getUniformLocation(this.getShaderProgram(), "u_hemiStrength"),
         uBaseColor:    gl.getUniformLocation(this.getShaderProgram(), "u_BaseColor"),
+        uCubeSampler:  gl.getUniformLocation(this.getShaderProgram(), "u_CubeSampler"),
       },
    });
    this.camera = camera;
