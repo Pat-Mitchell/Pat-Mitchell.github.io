@@ -22,6 +22,7 @@ const ambiSlider = document.getElementById("ambiSlider");
 const specSlider = document.getElementById("specSlider");
 const diffSlider = document.getElementById("diffSlider");
 const hemiSlider = document.getElementById("hemiSlider");
+const baseColorPicker = document.getElementById("baseColor");
 
 const lightDocElements = [ambiSlider, specSlider, diffSlider, hemiSlider];
 
@@ -54,6 +55,12 @@ function main() {
     lightDocElements.forEach(e => {
       monkeyShader.lighting[e.name] = e.value;
     });
+    let hexValue = baseColorPicker.value;
+    monkeyShader.baseColor = [
+      parseInt(hexValue.slice(0,2), 16) * 0.003921,
+      parseInt(hexValue.slice(2,4), 16) * 0.003921,
+      parseInt(hexValue.slice(4,6), 16) * 0.003921
+    ];
     draw(gl, mainCamera);
     requestAnimationFrame(tick);
   }
@@ -208,7 +215,8 @@ class TestShader extends Shader {
     specStrength: 0.4,
     diffStrength: 1.,
     hemiStrength: 1.,
-  }
+  };
+  baseColor = [];
   constructor(gl, camera){
     super();    
     this.setVSource(`
@@ -241,6 +249,7 @@ class TestShader extends Shader {
       varying vec2  v_TextureCoord;
       varying vec3  v_Position;
       uniform vec3  u_EyePosition;
+      uniform vec3  u_BaseColor;
       uniform float u_ambiStrength;
       uniform float u_specularStrength;
       uniform float u_diffStrength;
@@ -254,7 +263,7 @@ class TestShader extends Shader {
         vec2 uv = v_TextureCoord;
         vec3 coords = vec3(vec2(uv.x * 25., uv.y * 5.), 1.);
 
-        vec3 baseColor = vec3(.8);
+        vec3 baseColor = u_BaseColor;
         vec3 normal = v_Normal.xyz;
         normal = normalize(normal);
         // used for the specular highlight
@@ -311,6 +320,7 @@ class TestShader extends Shader {
         uSpecStrength: gl.getUniformLocation(this.getShaderProgram(), "u_specularStrength"),
         uDiffStrength: gl.getUniformLocation(this.getShaderProgram(), "u_diffStrength"),
         uHemiStrength: gl.getUniformLocation(this.getShaderProgram(), "u_hemiStrength"),
+        uBaseColor:    gl.getUniformLocation(this.getShaderProgram(), "u_baseColor"),
       },
    });
    this.camera = camera;
@@ -395,26 +405,31 @@ class TestShader extends Shader {
       this.getProgramInfo().uniformLocations.uEyePosition,
       this.camera.getPosition()
     );
+    // base Color
+    // gl.uniform3fv(
+    // this.getProgramInfo().uniformLocations.uBaseColor,
+    // this.baseColor
+    // );
     // ambient strength
     gl.uniform1f(
       this.getProgramInfo().uniformLocations.uAmbiStrength,
       this.lighting.ambiStrength
-    )
+    );
     // specular strength
     gl.uniform1f(
       this.getProgramInfo().uniformLocations.uSpecStrength,
       this.lighting.specStrength
-    )
+    );
     // diffuse strength
     gl.uniform1f(
       this.getProgramInfo().uniformLocations.uDiffStrength,
       this.lighting.diffStrength
-    )
+    );
     // hemisphere strength
     gl.uniform1f(
       this.getProgramInfo().uniformLocations.uHemiStrength,
       this.lighting.hemiStrength
-    )
+    );
     // final draw
     {
       const vertexCount = buffers.iCount;
