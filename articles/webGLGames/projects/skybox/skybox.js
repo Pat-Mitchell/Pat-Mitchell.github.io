@@ -406,10 +406,10 @@ class TestShader extends Shader {
       this.camera.getPosition()
     );
     // base Color
-    // gl.uniform3fv(
-    // this.getProgramInfo().uniformLocations.uBaseColor,
-    // this.baseColor
-    // );
+    gl.uniform3fv(
+      this.getProgramInfo().uniformLocations.uBaseColor,
+      new Float32Array(this.baseColor)
+    );
     // ambient strength
     gl.uniform1f(
       this.getProgramInfo().uniformLocations.uAmbiStrength,
