@@ -57,9 +57,9 @@ function main() {
     });
     let hexValue = baseColorPicker.value;
     monkeyShader.baseColor = [
-      parseInt(hexValue.slice(0,2), 16) * 0.003921,
-      parseInt(hexValue.slice(2,4), 16) * 0.003921,
-      parseInt(hexValue.slice(4,6), 16) * 0.003921
+      parseInt(hexValue.slice(1,3), 16) * 0.003921,
+      parseInt(hexValue.slice(3,5), 16) * 0.003921,
+      parseInt(hexValue.slice(5), 16) * 0.003921
     ];
     draw(gl, mainCamera);
     requestAnimationFrame(tick);
