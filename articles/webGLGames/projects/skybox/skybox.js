@@ -216,7 +216,7 @@ class TestShader extends Shader {
     diffStrength: 1.,
     hemiStrength: 1.,
   };
-  baseColor = [];
+  baseColor = [1., 1., 1.];
   constructor(gl, camera){
     super();    
     this.setVSource(`
@@ -260,10 +260,7 @@ class TestShader extends Shader {
       }
 
       void main() {
-        vec2 uv = v_TextureCoord;
-        vec3 coords = vec3(vec2(uv.x * 25., uv.y * 5.), 1.);
-
-        vec3 baseColor = u_BaseColor;
+        vec3 baseColor = u_BaseColor + 0.001;
         vec3 normal = v_Normal.xyz;
         normal = normalize(normal);
         // used for the specular highlight
@@ -320,7 +317,7 @@ class TestShader extends Shader {
         uSpecStrength: gl.getUniformLocation(this.getShaderProgram(), "u_specularStrength"),
         uDiffStrength: gl.getUniformLocation(this.getShaderProgram(), "u_diffStrength"),
         uHemiStrength: gl.getUniformLocation(this.getShaderProgram(), "u_hemiStrength"),
-        uBaseColor:    gl.getUniformLocation(this.getShaderProgram(), "u_baseColor"),
+        uBaseColor:    gl.getUniformLocation(this.getShaderProgram(), "u_BaseColor"),
       },
    });
    this.camera = camera;
