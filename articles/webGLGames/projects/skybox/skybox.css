@@ -1,0 +1,25 @@
+#controlsCell {
+  font-size: x-large;
+}
+
+input {
+  width: 10rem;
+}
+
+fieldset {
+  text-align: right;
+  line-height: 3rem;
+  border-color: grey;
+}
+
+canvas {
+  border: 2px solid grey;
+  padding: 1rem;
+  width:1280px;
+  margin: 0rem;
+}
+
+p {
+  width: 50%;
+  padding-left: 1rem;
+}

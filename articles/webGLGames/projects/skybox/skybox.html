@@ -7,20 +7,21 @@
     integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
     crossorigin="anonymous" defer>
     </script>
+    <link rel="stylesheet" href="skybox.css">
   </head>
   <body onload="main()">
     <table>
       <tr>
         <td>
-          <canvas id="canvas" width="1280" height="720" style="width:1280px;"></canvas>
+          <canvas id="canvas" width="1280" height="720"></canvas>
         </td>
-        <td style="vertical-align:top">
+        <td id="controlsCell">
           <fieldset>
             <legend>Controls</legend>
             <label for="rotationSlider">Rotation:</label>    
             <input type="range" step="any"  min="-360" max="360" value="0" id="rotationSlider" name="rotationSlider" />
             <br>
-	          <label for="baseColor">Base Color</label>
+	          <label for="baseColor">Base Color:&nbsp;</label>
 	          <input type="color" name="baseColor" id="baseColor" value="#daa520" />
 	          <br>
             <label for="ambiStrength">Ambient Strength:</label>    
@@ -37,19 +38,24 @@
           </fieldset>
         </td>
       </tr>
+      <tr>
+        <td colspan="2" style="width: 0px;">          
+          <h1>Interactable Lighting</h1>
+          <p>
+            Originally, this demo started out as me learning about adding a sky box
+            to a scene so future demos are more visually interesting. I added the monkey
+            model from Blender and had the camera automatically spinning around the mesh
+            before realizing that it would be nicer to control the camera yourself. Then,
+            I wanted to see if I could make the shader dynamic and added more controls for 
+            the lighting.
+          </p>
+          <p>
+            Overall, I'm happier with the demo being interactable. It's more fun than 
+            just having the camera spin around the monkey model.
+          </p>
+        </td>
+      </tr>
     </table>
-    <h1>Interactable Lighting</h1>
-    <p style="width: 50%">
-      Originally, this demo started out as me learning about adding a sky box
-      to a scene so future demos are more visually interesting. I added the monkey
-      model from Blender and had the camera automatically spinning around the mesh
-      before realizing that it would be nicer to control the camera yourself. Then,
-      I felt that one control was too barron, so I added more for the lighting and color.
-    </p>
-    <p style="width: 50%">
-      Overall, I'm happier with the demo being interactable. It's more fun than 
-      just having the camera spin around the monkey model.
-    </p>
     <script src="..\common\gl-util.js" type="text/javascript"></script>
     <script src="..\common\shaders.js" type="text/javascript"></script>
     <script src="..\common\objMesh.js" type="text/javascript"></script>
